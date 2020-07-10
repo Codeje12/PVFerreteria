@@ -62,6 +62,7 @@ Partial Class FrmProductos
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.pnlGroupBox = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.FotoProducto = New System.Windows.Forms.PictureBox()
         Me.lblImagen = New System.Windows.Forms.Label()
         Me.pnpDescProd = New System.Windows.Forms.Panel()
         Me.lblMostrarPrecio = New System.Windows.Forms.Label()
@@ -71,17 +72,17 @@ Partial Class FrmProductos
         Me.lblStock = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.btnImagen = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PnlDataGrid = New System.Windows.Forms.Panel()
         Me.DataGridProducto = New System.Windows.Forms.DataGridView()
         Me.lblListaCliente = New System.Windows.Forms.Label()
+        Me.lblMensajeFoto = New System.Windows.Forms.Label()
         Me.GpbClientes.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.gbpProductos.SuspendLayout()
         Me.pnlGroupBox.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.FotoProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnpDescProd.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlDataGrid.SuspendLayout()
         CType(Me.DataGridProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -504,16 +505,29 @@ Partial Class FrmProductos
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.lblMensajeFoto)
+        Me.GroupBox1.Controls.Add(Me.FotoProducto)
         Me.GroupBox1.Controls.Add(Me.lblImagen)
         Me.GroupBox1.Controls.Add(Me.pnpDescProd)
         Me.GroupBox1.Controls.Add(Me.btnImagen)
-        Me.GroupBox1.Controls.Add(Me.PictureBox1)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 0)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(264, 288)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Datos del producto seleccionado"
+        '
+        'FotoProducto
+        '
+        Me.FotoProducto.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FotoProducto.Location = New System.Drawing.Point(6, 18)
+        Me.FotoProducto.Name = "FotoProducto"
+        Me.FotoProducto.Size = New System.Drawing.Size(249, 110)
+        Me.FotoProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.FotoProducto.TabIndex = 2
+        Me.FotoProducto.TabStop = False
         '
         'lblImagen
         '
@@ -545,7 +559,7 @@ Partial Class FrmProductos
         '
         Me.lblMostrarPrecio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblMostrarPrecio.AutoSize = True
-        Me.lblMostrarPrecio.Location = New System.Drawing.Point(69, 99)
+        Me.lblMostrarPrecio.Location = New System.Drawing.Point(64, 99)
         Me.lblMostrarPrecio.Name = "lblMostrarPrecio"
         Me.lblMostrarPrecio.Size = New System.Drawing.Size(10, 13)
         Me.lblMostrarPrecio.TabIndex = 32
@@ -555,7 +569,7 @@ Partial Class FrmProductos
         '
         Me.lblMostrarStock.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.lblMostrarStock.AutoSize = True
-        Me.lblMostrarStock.Location = New System.Drawing.Point(69, 60)
+        Me.lblMostrarStock.Location = New System.Drawing.Point(64, 60)
         Me.lblMostrarStock.Name = "lblMostrarStock"
         Me.lblMostrarStock.Size = New System.Drawing.Size(10, 13)
         Me.lblMostrarStock.TabIndex = 31
@@ -564,7 +578,7 @@ Partial Class FrmProductos
         'LblMostrarNombre
         '
         Me.LblMostrarNombre.AutoSize = True
-        Me.LblMostrarNombre.Location = New System.Drawing.Point(69, 18)
+        Me.LblMostrarNombre.Location = New System.Drawing.Point(64, 18)
         Me.LblMostrarNombre.Name = "LblMostrarNombre"
         Me.LblMostrarNombre.Size = New System.Drawing.Size(10, 13)
         Me.LblMostrarNombre.TabIndex = 30
@@ -593,7 +607,7 @@ Partial Class FrmProductos
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(13, 18)
+        Me.lblNombre.Location = New System.Drawing.Point(4, 18)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(50, 13)
         Me.lblNombre.TabIndex = 27
@@ -611,17 +625,6 @@ Partial Class FrmProductos
         Me.btnImagen.TabIndex = 15
         Me.btnImagen.Text = "Examinar..."
         Me.btnImagen.UseVisualStyleBackColor = True
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.Location = New System.Drawing.Point(9, 19)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(249, 108)
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
         '
         'PnlDataGrid
         '
@@ -658,6 +661,16 @@ Partial Class FrmProductos
         Me.lblListaCliente.Text = "L I S T A D O   D E   P R O D U C T O S "
         Me.lblListaCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'lblMensajeFoto
+        '
+        Me.lblMensajeFoto.AutoSize = True
+        Me.lblMensajeFoto.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMensajeFoto.Location = New System.Drawing.Point(88, 62)
+        Me.lblMensajeFoto.Name = "lblMensajeFoto"
+        Me.lblMensajeFoto.Size = New System.Drawing.Size(93, 25)
+        Me.lblMensajeFoto.TabIndex = 26
+        Me.lblMensajeFoto.Text = "Sin foto"
+        '
         'FrmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -681,9 +694,9 @@ Partial Class FrmProductos
         Me.pnlGroupBox.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.FotoProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnpDescProd.ResumeLayout(False)
         Me.pnpDescProd.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PnlDataGrid.ResumeLayout(False)
         CType(Me.DataGridProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -719,7 +732,6 @@ Partial Class FrmProductos
     Friend WithEvents lblPrecio As Label
     Friend WithEvents lblStock As Label
     Friend WithEvents lblNombre As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PnlDataGrid As Panel
     Friend WithEvents DataGridProducto As DataGridView
     Friend WithEvents lblCliente As Label
@@ -743,4 +755,6 @@ Partial Class FrmProductos
     Friend WithEvents lblCodigoProd As Label
     Friend WithEvents btnModificar As Button
     Friend WithEvents lblListaCliente As Label
+    Friend WithEvents FotoProducto As PictureBox
+    Friend WithEvents lblMensajeFoto As Label
 End Class

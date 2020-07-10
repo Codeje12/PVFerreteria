@@ -4,6 +4,7 @@
 
     Private Sub FrmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "Productos"
+        Me.lblMensajeFoto.Visible = False
         MostrarDataGrid(Me.DataGridProducto, Sql)
         ComboBox_Load(Me.cbxMarcas, "M")
         ComboBox_Load(Me.cbxUnidad, "U")
@@ -109,11 +110,10 @@
         ValidarCampoDecimal(Me.txtCosto)
     End Sub
 
-    Private Sub txtCantidad_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCantidad.KeyUp
-        ValidarCampoDecimal(Me.txtCosto)
-    End Sub
+
 
     Private Sub DataGridProducto_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridProducto.MouseClick
+
         Me.Text = "Modificar"
         Me.txtNombre.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(1).Value
         Me.txtCodProducto.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(2).Value
@@ -125,15 +125,10 @@
         Me.cbxIva.SelectedIndex = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(6).Value
         Me.txtCantidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(11).Value
         Me.txtDescripcion.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(10).Value
-        Try
-            Dim imagen As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(12).Value) 'Selecciono el campo donde contiene la imagen del producto y lo guardo en la variable Imagen
-            Me.PictureBox1.Image = Image.FromFile(imagen)
-        Catch ex As Exception
-            MsgBox("Ruta de imagen Incorrecta o Index Incorrecto!!")
-        End Try
+
         Dim Nombre As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(1).Value)
         Dim Precio As Double = (Me.DataGridProducto.SelectedRows.Item(0).Cells(8).Value)
-        Dim Stock As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(11).Value)
+        Dim Stock As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(10).Value)
 
 
         'Convierto los lbl en algun registro de la base de datos
@@ -145,4 +140,35 @@
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         MostrarDataGrid(Me.DataGridProducto, Sql)
     End Sub
+
+    Private Sub txtCantidad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCantidad.KeyPress
+        If Not IsNumeric(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+
+    '************************BUSCAR IMAGEN DEL PRODUCTO PARA AGREGAR***************
+    Public Sub BuscarImagen()
+        Dim img As String = Application.StartupPath & "\imagenes"
+        Me.OpenFileDialog1.Title = "Seleccione una imagen"
+        Me.OpenFileDialog1.InitialDirectory = img
+        Me.OpenFileDialog1.Filter = "Imagenes|*.jpg;*.png;*.bmp"
+        If Me.OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            Imagen = Me.OpenFileDialog1.FileName
+            Me.FotoProducto.Image = Image.FromFile(Imagen)
+        End If
+    End Sub
+    '***************************************************************************
+
+    Private Sub DataGridProducto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridProducto.CellContentClick
+        Try
+            Dim imag As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(12).Value) 'Selecciono el campo donde contiene la imagen del producto y lo guardo en la variable Imagen
+            Me.FotoProducto.Image = Image.FromFile(imag)
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Me.lblMensajeFoto.Visible = True
+        End Try
+    End Sub
+
 End Class

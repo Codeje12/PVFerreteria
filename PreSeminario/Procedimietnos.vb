@@ -19,7 +19,7 @@ Module Procedimietnos
                 DataReader.Close()
                 ConexionMysql.Close()
             Else
-                MsgBox("Pal Lobby")
+                MsgBox("Error")
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -30,6 +30,7 @@ Module Procedimietnos
 
     '******************  FORMATOS DE GRILLAS DEL DATAGRIDVIEW **********************
     Public Sub GrillasDefault(ByVal Table As DataGridView)
+
         If Table.Columns(0).HeaderText = "Id_Cliente" Then
 
             Table.Columns(0).Visible = False
@@ -44,7 +45,16 @@ Module Procedimietnos
             Table.Columns(7).HeaderText = "Ciudad"
 
         ElseIf Table.Columns(0).HeaderText = "Id_Producto" Then
+
             Table.Columns(0).Visible = False
+            Table.Columns(12).Visible = False
+            Table.Columns(1).HeaderText = "Nombre"
+            Table.Columns(3).HeaderText = "Marca"
+            Table.Columns(4).HeaderText = "Rubro"
+            Table.Columns(6).HeaderText = "Iva Aplicado"
+            Table.Columns(7).HeaderText = "Costo $"
+            Table.Columns(8).HeaderText = "Venta $"
+            Table.Columns(11).HeaderText = "Unidad de Medida"
         End If
     End Sub
     '****************FUNCIONES PARA INSERTAR***********************************************
@@ -69,13 +79,11 @@ Module Procedimietnos
             Total = (costo * 0.4) + costo
         End If
         '**********************************
-
-
         Sql = "INSERT INTO producto(Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha_Vencimiento,Nombre,codigo_producto,Precio_Costo,Precio_Venta,Descripcion,Ruta_Imagen)
-                             VALUES (" & Replace(Iva, ",", ".") & "," & Unidad & ",'" & Marcas & "','" & Rubro & "','" & cantidad & "','" & Replace(fecha, "/", "\\") & "','" & Nombre & "','" & codProd & "'," & Replace(costo, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & Descripcion & "','" & Replace(Imagen, "\", "\\") & "')"
-
-
-        'Dim SQL As String = "INSERT INTO producto (Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha,Nombre,Precio_Costo,Precio_Venta,Descripcion,Imagen) Values (" & Replace(FrmProductos.cbxIva.SelectedValue, ",", ".") & "," & FrmProductos.cbxUnidad.SelectedValue & ",'" & FrmProductos.cbxMarcas.SelectedValue & "','" & FrmProductos.cbxRubro.SelectedValue & "','" & FrmProductos.txtCantidad.Text & "','" & Replace(FrmProductos.DateTimeProducto.Text, "/", "\\") & "','" & FrmProductos.txtNombre.Text & "'," & Replace(FrmProductos.txtCosto.Text, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & FrmProductos.txtDescripcion.Text & "','" & Replace(Imagen, "\", "\\") & "')"
+               VALUES (" & Replace(Iva, ",", ".") & ",
+                " & Unidad & ",'" & Marcas & "','" & Rubro & "','" & cantidad & "','" & Replace(fecha, "/", "\\") & "',
+               '" & Nombre & "','" & codProd & "'," & Replace(costo, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & Descripcion & "',
+                '" & Replace(Imagen, "\", "\\") & "')"
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
@@ -102,7 +110,7 @@ Module Procedimietnos
     End Function
 
     Public Function ActualizarProductos(Nombre As String, Rubro As String, Marcas As String, Unidad As String, fecha As String, costo As Double, Iva As Integer, cantidad As Double, Descripcion As String, CodProducto As String)
-        Sql = "Update Producto Set Nombre = '" & Nombre & "', Id_Rubro = " & Rubro & " , Id_Marca = " & Marcas & ", Id_Unidad = " & Unidad & ", Fecha_Vencimiento = '" & fecha & "', Precio_Costo = " & Replace(costo, ",", ".") & ", Id_Iva = " & Iva & ", Descripcion = '" & Descripcion & "' where Codigo_Producto = '" & CodProducto & "' "
+        Sql = "Update Producto Set Nombre = '" & Nombre & "', Id_Rubro = " & Rubro & " , Id_Marca = " & Marcas & ", Id_Unidad = " & Unidad & ", Fecha_Vencimiento = '" & fecha & "', Precio_Costo = " & Replace(costo, ",", ".") & ", Id_Iva = " & Iva & ", Descripcion = '" & Descripcion & "', '" & Replace(Imagen, "\", "\\") & "' where Codigo_Producto = '" & CodProducto & "' "
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
@@ -247,18 +255,17 @@ Module Procedimietnos
         Return Nothing
     End Function
 
-
     '************************BUSCAR IMAGEN DEL PRODUCTO PARA AGREGAR***************
-    Public Sub BuscarImagen()
-        Dim Ini As String = Application.StartupPath & "\imagenes"
-        FrmProductos.OpenFileDialog1.Title = "Seleccione una imagen"
-        FrmProductos.OpenFileDialog1.InitialDirectory = Ini
-        FrmProductos.OpenFileDialog1.Filter = "Imagenes|*.jpg;*.png;*.bmp"
-        If FrmProductos.OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Imagen = FrmProductos.OpenFileDialog1.FileName
-            FrmProductos.PictureBox1.Image = Image.FromFile(Imagen)
-        End If
-    End Sub
+    'Public Sub BuscarImagen(form As FrmProductos)
+    '    Dim img As String = Application.StartupPath & "\imagenes"
+    '    FrmProductos.OpenFileDialog1.Title = "Seleccione una imagen"
+    '    FrmProductos.OpenFileDialog1.InitialDirectory = img
+    '    FrmProductos.OpenFileDialog1.Filter = "Imagenes|*.jpg;*.png;*.bmp"
+    '    If FrmProductos.OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+    '        Imagen = FrmProductos.OpenFileDialog1.FileName
+    '        FrmProductos.FotoProducto.Image = Image.FromFile(Imagen)
+    '    End If
+    'End Sub
     '***************************************************************************
 
     '****************VALIDAR LOS CAMPOS QUE SEAN TIPO DOUBLE*****************************
@@ -269,7 +276,6 @@ Module Procedimietnos
         Catch ex As Exception
             CajaDeTexto.Text = "0.00"
             CajaDeTexto.Select(0, CajaDeTexto.Text.Length)
-
             Return False
         End Try
     End Function
