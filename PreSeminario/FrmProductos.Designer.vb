@@ -59,9 +59,9 @@ Partial Class FrmProductos
         Me.cbxRubro = New System.Windows.Forms.ComboBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.pnlGroupBox = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblMensajeFoto = New System.Windows.Forms.Label()
         Me.FotoProducto = New System.Windows.Forms.PictureBox()
         Me.lblImagen = New System.Windows.Forms.Label()
         Me.pnpDescProd = New System.Windows.Forms.Panel()
@@ -75,7 +75,7 @@ Partial Class FrmProductos
         Me.PnlDataGrid = New System.Windows.Forms.Panel()
         Me.DataGridProducto = New System.Windows.Forms.DataGridView()
         Me.lblListaCliente = New System.Windows.Forms.Label()
-        Me.lblMensajeFoto = New System.Windows.Forms.Label()
+        Me.OpenFileDialogProducto = New System.Windows.Forms.OpenFileDialog()
         Me.GpbClientes.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.gbpProductos.SuspendLayout()
@@ -486,10 +486,6 @@ Partial Class FrmProductos
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Nombre producto"
         '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
         'pnlGroupBox
         '
         Me.pnlGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -517,14 +513,24 @@ Partial Class FrmProductos
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Datos del producto seleccionado"
         '
+        'lblMensajeFoto
+        '
+        Me.lblMensajeFoto.AutoSize = True
+        Me.lblMensajeFoto.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMensajeFoto.Location = New System.Drawing.Point(82, 82)
+        Me.lblMensajeFoto.Name = "lblMensajeFoto"
+        Me.lblMensajeFoto.Size = New System.Drawing.Size(93, 25)
+        Me.lblMensajeFoto.TabIndex = 26
+        Me.lblMensajeFoto.Text = "Sin foto"
+        '
         'FotoProducto
         '
         Me.FotoProducto.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.FotoProducto.Location = New System.Drawing.Point(6, 18)
+        Me.FotoProducto.Location = New System.Drawing.Point(6, 19)
         Me.FotoProducto.Name = "FotoProducto"
-        Me.FotoProducto.Size = New System.Drawing.Size(249, 110)
+        Me.FotoProducto.Size = New System.Drawing.Size(249, 153)
         Me.FotoProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.FotoProducto.TabIndex = 2
         Me.FotoProducto.TabStop = False
@@ -533,7 +539,7 @@ Partial Class FrmProductos
         '
         Me.lblImagen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblImagen.AutoSize = True
-        Me.lblImagen.Location = New System.Drawing.Point(8, 139)
+        Me.lblImagen.Location = New System.Drawing.Point(8, 183)
         Me.lblImagen.Name = "lblImagen"
         Me.lblImagen.Size = New System.Drawing.Size(88, 13)
         Me.lblImagen.TabIndex = 25
@@ -550,16 +556,16 @@ Partial Class FrmProductos
         Me.pnpDescProd.Controls.Add(Me.lblPrecio)
         Me.pnpDescProd.Controls.Add(Me.lblStock)
         Me.pnpDescProd.Controls.Add(Me.lblNombre)
-        Me.pnpDescProd.Location = New System.Drawing.Point(9, 163)
+        Me.pnpDescProd.Location = New System.Drawing.Point(9, 207)
         Me.pnpDescProd.Name = "pnpDescProd"
-        Me.pnpDescProd.Size = New System.Drawing.Size(249, 122)
+        Me.pnpDescProd.Size = New System.Drawing.Size(249, 78)
         Me.pnpDescProd.TabIndex = 3
         '
         'lblMostrarPrecio
         '
         Me.lblMostrarPrecio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblMostrarPrecio.AutoSize = True
-        Me.lblMostrarPrecio.Location = New System.Drawing.Point(64, 99)
+        Me.lblMostrarPrecio.Location = New System.Drawing.Point(62, 63)
         Me.lblMostrarPrecio.Name = "lblMostrarPrecio"
         Me.lblMostrarPrecio.Size = New System.Drawing.Size(10, 13)
         Me.lblMostrarPrecio.TabIndex = 32
@@ -569,7 +575,7 @@ Partial Class FrmProductos
         '
         Me.lblMostrarStock.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.lblMostrarStock.AutoSize = True
-        Me.lblMostrarStock.Location = New System.Drawing.Point(64, 60)
+        Me.lblMostrarStock.Location = New System.Drawing.Point(64, 38)
         Me.lblMostrarStock.Name = "lblMostrarStock"
         Me.lblMostrarStock.Size = New System.Drawing.Size(10, 13)
         Me.lblMostrarStock.TabIndex = 31
@@ -578,7 +584,7 @@ Partial Class FrmProductos
         'LblMostrarNombre
         '
         Me.LblMostrarNombre.AutoSize = True
-        Me.LblMostrarNombre.Location = New System.Drawing.Point(64, 18)
+        Me.LblMostrarNombre.Location = New System.Drawing.Point(64, 11)
         Me.LblMostrarNombre.Name = "LblMostrarNombre"
         Me.LblMostrarNombre.Size = New System.Drawing.Size(10, 13)
         Me.LblMostrarNombre.TabIndex = 30
@@ -588,7 +594,7 @@ Partial Class FrmProductos
         '
         Me.lblPrecio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblPrecio.AutoSize = True
-        Me.lblPrecio.Location = New System.Drawing.Point(13, 99)
+        Me.lblPrecio.Location = New System.Drawing.Point(11, 63)
         Me.lblPrecio.Name = "lblPrecio"
         Me.lblPrecio.Size = New System.Drawing.Size(43, 13)
         Me.lblPrecio.TabIndex = 29
@@ -598,7 +604,7 @@ Partial Class FrmProductos
         '
         Me.lblStock.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.lblStock.AutoSize = True
-        Me.lblStock.Location = New System.Drawing.Point(13, 60)
+        Me.lblStock.Location = New System.Drawing.Point(13, 38)
         Me.lblStock.Name = "lblStock"
         Me.lblStock.Size = New System.Drawing.Size(44, 13)
         Me.lblStock.TabIndex = 28
@@ -607,7 +613,7 @@ Partial Class FrmProductos
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(4, 18)
+        Me.lblNombre.Location = New System.Drawing.Point(4, 12)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(50, 13)
         Me.lblNombre.TabIndex = 27
@@ -619,7 +625,7 @@ Partial Class FrmProductos
         Me.btnImagen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.btnImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnImagen.Font = New System.Drawing.Font("Dungeon", 9.0!)
-        Me.btnImagen.Location = New System.Drawing.Point(107, 134)
+        Me.btnImagen.Location = New System.Drawing.Point(107, 178)
         Me.btnImagen.Name = "btnImagen"
         Me.btnImagen.Size = New System.Drawing.Size(100, 23)
         Me.btnImagen.TabIndex = 15
@@ -661,15 +667,9 @@ Partial Class FrmProductos
         Me.lblListaCliente.Text = "L I S T A D O   D E   P R O D U C T O S "
         Me.lblListaCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'lblMensajeFoto
+        'OpenFileDialogProducto
         '
-        Me.lblMensajeFoto.AutoSize = True
-        Me.lblMensajeFoto.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeFoto.Location = New System.Drawing.Point(88, 62)
-        Me.lblMensajeFoto.Name = "lblMensajeFoto"
-        Me.lblMensajeFoto.Size = New System.Drawing.Size(93, 25)
-        Me.lblMensajeFoto.TabIndex = 26
-        Me.lblMensajeFoto.Text = "Sin foto"
+        Me.OpenFileDialogProducto.FileName = "OpenFileDialog1"
         '
         'FrmProductos
         '
@@ -722,7 +722,6 @@ Partial Class FrmProductos
     Friend WithEvents cbxRubro As ComboBox
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents pnlGroupBox As Panel
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents pnpDescProd As Panel
@@ -757,4 +756,5 @@ Partial Class FrmProductos
     Friend WithEvents lblListaCliente As Label
     Friend WithEvents FotoProducto As PictureBox
     Friend WithEvents lblMensajeFoto As Label
+    Friend WithEvents OpenFileDialogProducto As OpenFileDialog
 End Class

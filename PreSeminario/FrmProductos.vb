@@ -74,17 +74,26 @@
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+
         If Me.Text = "Productos" Then
+
             If Me.txtNombre.Text <> "" And Me.txtCosto.Text <> "" And Me.txtCodProducto.Text <> "" Then
+
                 AgregarProducto(Me.txtNombre.Text, Me.txtCodProducto.Text, Me.cbxRubro.SelectedValue, Me.cbxMarcas.SelectedValue, Me.cbxUnidad.SelectedValue, Me.DateTimeProducto.Value, Replace(Me.txtCosto.Text, ".", ","), Me.cbxIva.SelectedValue, Me.txtCantidad.Text, Me.txtDescripcion.Text)
                 MostrarDataGrid(Me.DataGridProducto, Sql)
+
             Else
+
                 MsgBox("EL CAMPO COSTO ES UN CAMPO DECIMAL. DIGITE EL PRECIO", MsgBoxStyle.Critical, "ADVERTENCIA")
             End If
+
         ElseIf Me.Text = "Modificar" Then
+
             ActualizarProductos(Me.txtNombre.Text, Me.cbxRubro.SelectedValue, Me.cbxMarcas.SelectedValue, Me.cbxUnidad.SelectedValue, Me.DateTimeProducto.Value, Replace(Me.txtCosto.Text, ".", ","), cbxIva.SelectedValue, Me.txtCantidad.Text, Me.txtDescripcion.Text, Me.txtCodProducto.Text)
             MostrarDataGrid(Me.DataGridProducto, Sql)
+
         End If
+
     End Sub
 
 
@@ -99,7 +108,7 @@
         Me.cbxUnidad.Text = "Seleccionar"
         Me.cbxRubro.Text = "Seleccionar"
         Me.cbxMarcas.Text = "Seleccionar"
-
+        Me.lblMensajeFoto.Visible = False
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
@@ -114,6 +123,7 @@
 
     Private Sub DataGridProducto_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridProducto.MouseClick
 
+        Me.lblMensajeFoto.Visible = False
         Me.Text = "Modificar"
         Me.txtNombre.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(1).Value
         Me.txtCodProducto.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(2).Value
@@ -130,15 +140,15 @@
         Dim Precio As Double = (Me.DataGridProducto.SelectedRows.Item(0).Cells(8).Value)
         Dim Stock As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(10).Value)
 
-
-        'Convierto los lbl en algun registro de la base de datos
         Me.lblMostrarPrecio.Text = Precio
         Me.lblMostrarStock.Text = Stock
         Me.LblMostrarNombre.Text = Nombre
     End Sub
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+
         MostrarDataGrid(Me.DataGridProducto, Sql)
+
     End Sub
 
     Private Sub txtCantidad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCantidad.KeyPress
@@ -147,28 +157,26 @@
         End If
     End Sub
 
-
-    '************************BUSCAR IMAGEN DEL PRODUCTO PARA AGREGAR***************
-    Public Sub BuscarImagen()
-        Dim img As String = Application.StartupPath & "\imagenes"
-        Me.OpenFileDialog1.Title = "Seleccione una imagen"
-        Me.OpenFileDialog1.InitialDirectory = img
-        Me.OpenFileDialog1.Filter = "Imagenes|*.jpg;*.png;*.bmp"
-        If Me.OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Imagen = Me.OpenFileDialog1.FileName
-            Me.FotoProducto.Image = Image.FromFile(Imagen)
-        End If
-    End Sub
-    '***************************************************************************
-
     Private Sub DataGridProducto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridProducto.CellContentClick
         Try
-            Dim imag As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(12).Value) 'Selecciono el campo donde contiene la imagen del producto y lo guardo en la variable Imagen
-            Me.FotoProducto.Image = Image.FromFile(imag)
+            Dim img As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(12).Value) 'Selecciono el campo donde contiene la imagen del producto y lo guardo en la variable Imagen
+            Me.FotoProducto.Image = Image.FromFile(img)
         Catch ex As Exception
             'MsgBox(ex.Message)
             Me.lblMensajeFoto.Visible = True
         End Try
     End Sub
 
+    '************************BUSCAR IMAGEN DEL PRODUCTO PARA AGREGAR***************
+    Public Sub BuscarImagen()
+        Dim img As String = Application.StartupPath & "\imagenes"
+        Me.OpenFileDialogProducto.Title = "Seleccione una imagen"
+        Me.OpenFileDialogProducto.InitialDirectory = img
+        Me.OpenFileDialogProducto.Filter = "Imagenes|*.jpg;*.png;*.bmp"
+        If Me.OpenFileDialogProducto.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            Imagen = Me.OpenFileDialogProducto.FileName
+            Me.FotoProducto.Image = Image.FromFile(Imagen)
+        End If
+    End Sub
+    '***************************************************************************
 End Class

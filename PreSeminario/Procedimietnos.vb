@@ -99,6 +99,7 @@ Module Procedimietnos
 
     Public Function Actualizar(ByVal nombre As String, ByVal apellido As String, ByVal dni As Integer, ByVal telefono As String, ByVal Correo As String, ByVal direccion As String, ByVal localidad As String)
         Sql = "UPDATE Cliente SET Nombre = '" & nombre & "',Apellido = '" & apellido & "',telefono='" & telefono & "',correo ='" & Correo & "',direccion='" & direccion & "',localidad = '" & localidad & "' WHERE dni = " & dni
+
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
@@ -106,11 +107,13 @@ Module Procedimietnos
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
         Return False
+
     End Function
 
-    Public Function ActualizarProductos(Nombre As String, Rubro As String, Marcas As String, Unidad As String, fecha As String, costo As Double, Iva As Integer, cantidad As Double, Descripcion As String, CodProducto As String)
-        Sql = "Update Producto Set Nombre = '" & Nombre & "', Id_Rubro = " & Rubro & " , Id_Marca = " & Marcas & ", Id_Unidad = " & Unidad & ", Fecha_Vencimiento = '" & fecha & "', Precio_Costo = " & Replace(costo, ",", ".") & ", Id_Iva = " & Iva & ", Descripcion = '" & Descripcion & "', '" & Replace(Imagen, "\", "\\") & "' where Codigo_Producto = '" & CodProducto & "' "
+    Public Function ActualizarProductos(Nombre As String, Rubro As String, Marcas As String, Unidad As String, fecha As String, costo As Double, Iva As Integer, cantidad As Integer, Descripcion As String, CodProducto As String)
+        Sql = "UPDATE Producto Set Nombre = '" & Nombre & "', Id_Rubro = " & Rubro & " , Id_Marca = " & Marcas & ", Id_Unidad = " & Unidad & ", Fecha_Vencimiento = '" & fecha & "', Precio_Costo = " & Replace(costo, ",", ".") & ", Id_Iva = " & Iva & ",Stock= " & cantidad & ", Descripcion = '" & Descripcion & "', '" & Replace(Imagen, "\", "\\") & "' where Codigo_Producto = '" & CodProducto & "' "
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
