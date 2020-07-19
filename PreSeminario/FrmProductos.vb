@@ -2,7 +2,7 @@
     Private Sql As String = "SELECT * FROM mostrartabla Order By nombre"
 
 
-    Private Sub FrmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub FrmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "Productos"
         Me.lblMensajeFoto.Visible = False
         MostrarDataGrid(Me.DataGridProducto, Sql)
@@ -89,7 +89,8 @@
 
         ElseIf Me.Text = "Modificar" Then
 
-            ActualizarProductos(Me.txtNombre.Text, Me.cbxRubro.SelectedValue, Me.cbxMarcas.SelectedValue, Me.cbxUnidad.SelectedValue, Me.DateTimeProducto.Value, Replace(Me.txtCosto.Text, ".", ","), cbxIva.SelectedValue, Me.txtCantidad.Text, Me.txtDescripcion.Text, Me.txtCodProducto.Text)
+            ActualizarProductos(Me)
+            'Me.txtNombre.Text, Me.cbxRubro.SelectedValue, Me.cbxMarcas.SelectedValue, Me.cbxUnidad.SelectedValue, Me.DateTimeProducto.Value, Replace(Me.txtCosto.Text, ".", ","), cbxIva.SelectedValue, Me.txtCantidad.Text, Me.txtDescripcion.Text, Me.txtCodProducto.Text)
             MostrarDataGrid(Me.DataGridProducto, Sql)
 
         End If
@@ -130,11 +131,19 @@
         Me.txtCodProducto.Enabled = False
         Me.cbxRubro.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(4).Value
         Me.cbxMarcas.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(3).Value
-        Me.cbxUnidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(9).Value
+        Me.cbxUnidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(11).Value
         Me.txtCosto.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(7).Value
         Me.cbxIva.SelectedIndex = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(6).Value
-        Me.txtCantidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(11).Value
-        Me.txtDescripcion.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(10).Value
+        Me.txtCantidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(10).Value
+        Me.txtDescripcion.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(9).Value
+
+        Try
+            Dim img As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(12).Value) 'Selecciono el campo donde contiene la imagen del producto y lo guardo en la variable Imagen
+            Me.FotoProducto.Image = Image.FromFile(img)
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Me.lblMensajeFoto.Visible = True
+        End Try
 
         Dim Nombre As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(1).Value)
         Dim Precio As Double = (Me.DataGridProducto.SelectedRows.Item(0).Cells(8).Value)
@@ -158,13 +167,7 @@
     End Sub
 
     Private Sub DataGridProducto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridProducto.CellContentClick
-        Try
-            Dim img As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(12).Value) 'Selecciono el campo donde contiene la imagen del producto y lo guardo en la variable Imagen
-            Me.FotoProducto.Image = Image.FromFile(img)
-        Catch ex As Exception
-            'MsgBox(ex.Message)
-            Me.lblMensajeFoto.Visible = True
-        End Try
+
     End Sub
 
     '************************BUSCAR IMAGEN DEL PRODUCTO PARA AGREGAR***************

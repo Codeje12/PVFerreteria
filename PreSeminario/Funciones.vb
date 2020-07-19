@@ -1,14 +1,13 @@
-﻿Imports WindowsApplication1.FrmProductos
-Module Procedimietnos
+﻿
+Module Funciones
     Public Imagen As String
-    Public FrmPrincipal As New WindowsApplication1.FmrPrincipal
     Public Sql As String
 
     '**************FUNCION PARA MOSTRAR LOS REGISTROS DE LA DATA BASE*********************
-    Public Sub MostrarDataGrid(ByVal Table As DataGridView, Sql As String)
+    Public Sub MostrarDataGrid(ByVal Table As DataGridView, Sqlx As String)
         Try
             If ConectarMySql() = True Then 'Pregunto si se conecto a la base de Datos
-                Comando.CommandText = Sql
+                Comando.CommandText = Sqlx
                 Comando.CommandType = CommandType.Text
                 Comando.Connection = ConexionMysql
                 DataReader = Comando.ExecuteReader 'Ejecuto el comando y lo guardo en el DataReader
@@ -55,7 +54,9 @@ Module Procedimietnos
             Table.Columns(7).HeaderText = "Costo $"
             Table.Columns(8).HeaderText = "Venta $"
             Table.Columns(11).HeaderText = "Unidad de Medida"
+
         End If
+
     End Sub
     '****************FUNCIONES PARA INSERTAR***********************************************
     Public Function AgregarClientes(ByVal nombre As String, ByVal apellido As String, ByVal dni As String, ByVal telefono As String, ByVal Correo As String, ByVal direccion As String, ByVal localidad As String) As Boolean
@@ -79,11 +80,7 @@ Module Procedimietnos
             Total = (costo * 0.4) + costo
         End If
         '**********************************
-        Sql = "INSERT INTO producto(Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha_Vencimiento,Nombre,codigo_producto,Precio_Costo,Precio_Venta,Descripcion,Ruta_Imagen)
-               VALUES (" & Replace(Iva, ",", ".") & ",
-                " & Unidad & ",'" & Marcas & "','" & Rubro & "','" & cantidad & "','" & Replace(fecha, "/", "\\") & "',
-               '" & Nombre & "','" & codProd & "'," & Replace(costo, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & Descripcion & "',
-                '" & Replace(Imagen, "\", "\\") & "')"
+        Sql = "INSERT INTO producto(Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha_Vencimiento,Nombre,codigo_producto,Precio_Costo,Precio_Venta,Descripcion,Ruta_Imagen) VALUES (" & Replace(Iva, ",", ".") & "," & Unidad & ",'" & Marcas & "','" & Rubro & "','" & cantidad & "','" & Replace(fecha, "/", "\\") & "', '" & Nombre & "','" & codProd & "'," & Replace(costo, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & Descripcion & "','" & Replace(Imagen, "\", "\\") & "')"
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
@@ -112,8 +109,25 @@ Module Procedimietnos
 
     End Function
 
-    Public Function ActualizarProductos(Nombre As String, Rubro As String, Marcas As String, Unidad As String, fecha As String, costo As Double, Iva As Integer, cantidad As Integer, Descripcion As String, CodProducto As String)
-        Sql = "UPDATE Producto Set Nombre = '" & Nombre & "', Id_Rubro = " & Rubro & " , Id_Marca = " & Marcas & ", Id_Unidad = " & Unidad & ", Fecha_Vencimiento = '" & fecha & "', Precio_Costo = " & Replace(costo, ",", ".") & ", Id_Iva = " & Iva & ",Stock= " & cantidad & ", Descripcion = '" & Descripcion & "', '" & Replace(Imagen, "\", "\\") & "' where Codigo_Producto = '" & CodProducto & "' "
+    Public Function ActualizarProductos(ByVal Frm As FrmProductos)
+        '*******CALCULO IVA****************
+        Dim Bandera As Integer = Frm.cbxIva.SelectedValue
+        Dim Iva As Double
+        If Bandera = 1 Then
+            Iva = 0.21
+        ElseIf Bandera = 2 Then
+            Iva = 0.4
+        Else
+            MsgBox("Iva Incorrecto!")
+        End If
+        Dim Total As Double
+        Dim SubTotal As Double
+        Dim Costo As Double = Frm.txtCosto.Text
+        SubTotal = Iva * Costo
+        Total = Costo + SubTotal
+        '**********************************
+
+        Sql = "UPDATE Producto Set Nombre = '" & Frm.txtNombre.Text & "',Id_Marca = " & Frm.cbxMarcas.SelectedValue & " , Id_Rubro = " & Frm.cbxRubro.SelectedValue & ", Ruta_Imagen = '" & Replace(Imagen, "\", "\\") & "', Fecha_Vencimiento= '" & Frm.DateTimeProducto.Value & "', Id_Iva = " & Frm.cbxIva.SelectedValue & " , Precio_Costo = " & Replace(Frm.txtCosto.Text, ",", ".") & " , Precio_Venta = " & Replace(Total, ",", ".") & " , Id_Unidad = " & Frm.cbxUnidad.SelectedValue & ", Descripcion = '" & Frm.txtDescripcion.Text & "' , Stock = " & Frm.txtCantidad.Text & " Where Codigo_Producto = '" & Frm.txtCodProducto.Text & "' "
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
@@ -124,8 +138,13 @@ Module Procedimietnos
         Return False
     End Function
 
-    '******Eliminar *******
 
+    Public Function Nombre(ByVal Frm As FrmProductos)
+        MsgBox("Estamos en el campo " + Frm.txtNombre.Text + " !")
+        Return False
+    End Function
+
+    '******Eliminar *******
     Public Function Eliminar(id As String, num As Integer)
         If num = 1 Then
             Sql = "Delete from cliente where dni = " & id
@@ -285,3 +304,4 @@ Module Procedimietnos
 
     '***************************************************************************
 End Module
+

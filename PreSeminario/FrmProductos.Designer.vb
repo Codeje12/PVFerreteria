@@ -235,6 +235,8 @@ Partial Class FrmProductos
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbpProductos.Controls.Add(Me.txtCodProducto)
         Me.gbpProductos.Controls.Add(Me.lblCodigoProd)
+        Me.gbpProductos.Controls.Add(Me.lblImagen)
+        Me.gbpProductos.Controls.Add(Me.btnImagen)
         Me.gbpProductos.Controls.Add(Me.lblCliente)
         Me.gbpProductos.Controls.Add(Me.btnMasUnidad)
         Me.gbpProductos.Controls.Add(Me.btnMasMarca)
@@ -267,7 +269,7 @@ Partial Class FrmProductos
         '
         'txtCodProducto
         '
-        Me.txtCodProducto.Location = New System.Drawing.Point(116, 50)
+        Me.txtCodProducto.Location = New System.Drawing.Point(116, 52)
         Me.txtCodProducto.Name = "txtCodProducto"
         Me.txtCodProducto.Size = New System.Drawing.Size(100, 20)
         Me.txtCodProducto.TabIndex = 2
@@ -275,7 +277,7 @@ Partial Class FrmProductos
         'lblCodigoProd
         '
         Me.lblCodigoProd.AutoSize = True
-        Me.lblCodigoProd.Location = New System.Drawing.Point(10, 56)
+        Me.lblCodigoProd.Location = New System.Drawing.Point(10, 58)
         Me.lblCodigoProd.Name = "lblCodigoProd"
         Me.lblCodigoProd.Size = New System.Drawing.Size(75, 13)
         Me.lblCodigoProd.TabIndex = 33
@@ -329,7 +331,7 @@ Partial Class FrmProductos
         '
         'txtDescripcion
         '
-        Me.txtDescripcion.Location = New System.Drawing.Point(785, 129)
+        Me.txtDescripcion.Location = New System.Drawing.Point(782, 91)
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(100, 20)
         Me.txtDescripcion.TabIndex = 13
@@ -337,7 +339,7 @@ Partial Class FrmProductos
         'lblSelctImg
         '
         Me.lblSelctImg.AutoSize = True
-        Me.lblSelctImg.Location = New System.Drawing.Point(689, 132)
+        Me.lblSelctImg.Location = New System.Drawing.Point(686, 93)
         Me.lblSelctImg.Name = "lblSelctImg"
         Me.lblSelctImg.Size = New System.Drawing.Size(63, 13)
         Me.lblSelctImg.TabIndex = 20
@@ -345,7 +347,7 @@ Partial Class FrmProductos
         '
         'txtCantidad
         '
-        Me.txtCantidad.Location = New System.Drawing.Point(785, 91)
+        Me.txtCantidad.Location = New System.Drawing.Point(782, 53)
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(100, 20)
         Me.txtCantidad.TabIndex = 12
@@ -361,7 +363,7 @@ Partial Class FrmProductos
         'lblCantidad
         '
         Me.lblCantidad.AutoSize = True
-        Me.lblCantidad.Location = New System.Drawing.Point(689, 91)
+        Me.lblCantidad.Location = New System.Drawing.Point(686, 58)
         Me.lblCantidad.Name = "lblCantidad"
         Me.lblCantidad.Size = New System.Drawing.Size(49, 13)
         Me.lblCantidad.TabIndex = 18
@@ -370,7 +372,7 @@ Partial Class FrmProductos
         'cbxIva
         '
         Me.cbxIva.FormattingEnabled = True
-        Me.cbxIva.Location = New System.Drawing.Point(785, 55)
+        Me.cbxIva.Location = New System.Drawing.Point(782, 17)
         Me.cbxIva.Name = "cbxIva"
         Me.cbxIva.Size = New System.Drawing.Size(100, 21)
         Me.cbxIva.TabIndex = 11
@@ -378,7 +380,7 @@ Partial Class FrmProductos
         'lblIva
         '
         Me.lblIva.AutoSize = True
-        Me.lblIva.Location = New System.Drawing.Point(689, 59)
+        Me.lblIva.Location = New System.Drawing.Point(686, 25)
         Me.lblIva.Name = "lblIva"
         Me.lblIva.Size = New System.Drawing.Size(30, 13)
         Me.lblIva.TabIndex = 16
@@ -407,12 +409,12 @@ Partial Class FrmProductos
         Me.DateTimeProducto.Name = "DateTimeProducto"
         Me.DateTimeProducto.Size = New System.Drawing.Size(100, 20)
         Me.DateTimeProducto.TabIndex = 9
-        Me.DateTimeProducto.Value = New Date(2020, 6, 16, 0, 0, 0, 0)
+        Me.DateTimeProducto.Value = New Date(2020, 7, 17, 0, 0, 0, 0)
         '
         'lblFechaVen
         '
         Me.lblFechaVen.AutoSize = True
-        Me.lblFechaVen.Location = New System.Drawing.Point(357, 94)
+        Me.lblFechaVen.Location = New System.Drawing.Point(357, 93)
         Me.lblFechaVen.Name = "lblFechaVen"
         Me.lblFechaVen.Size = New System.Drawing.Size(37, 13)
         Me.lblFechaVen.TabIndex = 10
@@ -503,9 +505,7 @@ Partial Class FrmProductos
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.lblMensajeFoto)
         Me.GroupBox1.Controls.Add(Me.FotoProducto)
-        Me.GroupBox1.Controls.Add(Me.lblImagen)
         Me.GroupBox1.Controls.Add(Me.pnpDescProd)
-        Me.GroupBox1.Controls.Add(Me.btnImagen)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 0)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(264, 288)
@@ -517,10 +517,10 @@ Partial Class FrmProductos
         '
         Me.lblMensajeFoto.AutoSize = True
         Me.lblMensajeFoto.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeFoto.Location = New System.Drawing.Point(82, 82)
+        Me.lblMensajeFoto.Location = New System.Drawing.Point(84, 102)
         Me.lblMensajeFoto.Name = "lblMensajeFoto"
         Me.lblMensajeFoto.Size = New System.Drawing.Size(93, 25)
-        Me.lblMensajeFoto.TabIndex = 26
+        Me.lblMensajeFoto.TabIndex = 27
         Me.lblMensajeFoto.Text = "Sin foto"
         '
         'FotoProducto
@@ -530,7 +530,7 @@ Partial Class FrmProductos
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FotoProducto.Location = New System.Drawing.Point(6, 19)
         Me.FotoProducto.Name = "FotoProducto"
-        Me.FotoProducto.Size = New System.Drawing.Size(249, 153)
+        Me.FotoProducto.Size = New System.Drawing.Size(255, 182)
         Me.FotoProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.FotoProducto.TabIndex = 2
         Me.FotoProducto.TabStop = False
@@ -539,7 +539,7 @@ Partial Class FrmProductos
         '
         Me.lblImagen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblImagen.AutoSize = True
-        Me.lblImagen.Location = New System.Drawing.Point(8, 183)
+        Me.lblImagen.Location = New System.Drawing.Point(686, 129)
         Me.lblImagen.Name = "lblImagen"
         Me.lblImagen.Size = New System.Drawing.Size(88, 13)
         Me.lblImagen.TabIndex = 25
@@ -625,7 +625,7 @@ Partial Class FrmProductos
         Me.btnImagen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.btnImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnImagen.Font = New System.Drawing.Font("Dungeon", 9.0!)
-        Me.btnImagen.Location = New System.Drawing.Point(107, 178)
+        Me.btnImagen.Location = New System.Drawing.Point(782, 126)
         Me.btnImagen.Name = "btnImagen"
         Me.btnImagen.Size = New System.Drawing.Size(100, 23)
         Me.btnImagen.TabIndex = 15
@@ -755,6 +755,6 @@ Partial Class FrmProductos
     Friend WithEvents btnModificar As Button
     Friend WithEvents lblListaCliente As Label
     Friend WithEvents FotoProducto As PictureBox
-    Friend WithEvents lblMensajeFoto As Label
     Friend WithEvents OpenFileDialogProducto As OpenFileDialog
+    Friend WithEvents lblMensajeFoto As Label
 End Class
