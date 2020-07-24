@@ -45,15 +45,16 @@
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If Me.Text = "Modificar" Then
-            Actualizar(Me.TxtNombre.Text, Me.TxtApelido.Text, Me.TxtDni.Text, Me.TxtTelefono.Text, Me.TxtCorreo.Text, Me.TxtDireccion.Text, Me.TxtLocalidad.Text)
+            ActualizarCliente(Me)
         ElseIf Me.Text = "Clientes" Then
 
             If TxtNombre.Text <> "" And TxtApelido.Text <> "" Then
-                AgregarClientes(Me.TxtNombre.Text, Me.TxtApelido.Text, Me.TxtDni.Text, Me.TxtTelefono.Text, Me.TxtCorreo.Text, Me.TxtDireccion.Text, Me.TxtLocalidad.Text)
+                AgregarClientes(Me)
                 MostrarDataGrid(Me.DataGridViewCliente, Sql)
-            Else
-                MsgBox("Hay campos que no pueden quedar vacios! (NOMBRE, APELLIDO, DNI)", MsgBoxStyle.Critical, "AVISO!")
             End If
+        Else
+            MsgBox("Hay campos que no pueden quedar vacios! (NOMBRE, APELLIDO, DNI)", MsgBoxStyle.Critical, "AVISO!")
+
         End If
 
 
@@ -70,7 +71,7 @@
         Me.TxtLocalidad.Text = ""
     End Sub
 
-    Private Sub DataGridViewCliente_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles DataGridViewCliente.MouseDoubleClick
+    Private Sub DataGridViewCliente_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridViewCliente.MouseClick
         Me.TxtDni.Enabled = False
 
         Try
@@ -83,9 +84,7 @@
             Me.TxtLocalidad.Text = Me.DataGridViewCliente.Rows(Me.DataGridViewCliente.CurrentRow.Index).Cells(7).Value
             Me.Text = "Modificar"
         Catch ex As Exception
-
+            MsgBox(ex)
         End Try
     End Sub
-
-
 End Class

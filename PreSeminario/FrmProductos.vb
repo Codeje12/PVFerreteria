@@ -37,8 +37,8 @@
     End Sub
 
     Private Sub txtBuscarProductos_TextChanged(sender As Object, e As EventArgs) Handles txtBuscarProductos.TextChanged
-        If BuscarProducto(Me.txtBuscarProductos.Text).Rows.Count > 0 Then
-            Me.DataGridProducto.DataSource = BuscarProducto(Me.txtBuscarProductos.Text)
+        If BuscarProducto(Me.txtBuscarProductos.Text, Me).Rows.Count > 0 Then
+            Me.DataGridProducto.DataSource = BuscarProducto(Me.txtBuscarProductos.Text, Me)
         End If
     End Sub
 
@@ -62,7 +62,7 @@
     End Sub
 
     Private Sub btnImagen_Click(sender As Object, e As EventArgs) Handles btnImagen.Click
-        BuscarImagen()
+        BuscarImagen(Me)
     End Sub
 
     Private Sub btnNuevo_Click_1(sender As Object, e As EventArgs) Handles btnNuevo.Click
@@ -79,12 +79,13 @@
 
             If Me.txtNombre.Text <> "" And Me.txtCosto.Text <> "" And Me.txtCodProducto.Text <> "" Then
 
-                AgregarProducto(Me.txtNombre.Text, Me.txtCodProducto.Text, Me.cbxRubro.SelectedValue, Me.cbxMarcas.SelectedValue, Me.cbxUnidad.SelectedValue, Me.DateTimeProducto.Value, Replace(Me.txtCosto.Text, ".", ","), Me.cbxIva.SelectedValue, Me.txtCantidad.Text, Me.txtDescripcion.Text)
+                AgregarProducto(Me)
                 MostrarDataGrid(Me.DataGridProducto, Sql)
 
             Else
 
                 MsgBox("EL CAMPO COSTO ES UN CAMPO DECIMAL. DIGITE EL PRECIO", MsgBoxStyle.Critical, "ADVERTENCIA")
+
             End If
 
         ElseIf Me.Text = "Modificar" Then
@@ -110,10 +111,13 @@
         Me.cbxRubro.Text = "Seleccionar"
         Me.cbxMarcas.Text = "Seleccionar"
         Me.lblMensajeFoto.Visible = False
+        'Me.FotoProducto.Dispose()
+        Me.FotoProducto.Image = Nothing
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Eliminar(txtCodProducto.Text, 2)
+        MostrarDataGrid(Me.DataGridProducto, Sql)
     End Sub
 
     Private Sub txtCosto_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCosto.KeyUp
@@ -142,7 +146,9 @@
             Me.FotoProducto.Image = Image.FromFile(img)
         Catch ex As Exception
             'MsgBox(ex.Message)
+            Me.FotoProducto.Image = Nothing
             Me.lblMensajeFoto.Visible = True
+
         End Try
 
         Dim Nombre As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(1).Value)
@@ -166,20 +172,4 @@
         End If
     End Sub
 
-    Private Sub DataGridProducto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridProducto.CellContentClick
-
-    End Sub
-
-    '************************BUSCAR IMAGEN DEL PRODUCTO PARA AGREGAR***************
-    Public Sub BuscarImagen()
-        Dim img As String = Application.StartupPath & "\imagenes"
-        Me.OpenFileDialogProducto.Title = "Seleccione una imagen"
-        Me.OpenFileDialogProducto.InitialDirectory = img
-        Me.OpenFileDialogProducto.Filter = "Imagenes|*.jpg;*.png;*.bmp"
-        If Me.OpenFileDialogProducto.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Imagen = Me.OpenFileDialogProducto.FileName
-            Me.FotoProducto.Image = Image.FromFile(Imagen)
-        End If
-    End Sub
-    '***************************************************************************
 End Class

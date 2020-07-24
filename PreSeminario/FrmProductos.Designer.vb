@@ -36,6 +36,8 @@ Partial Class FrmProductos
         Me.gbpProductos = New System.Windows.Forms.GroupBox()
         Me.txtCodProducto = New System.Windows.Forms.TextBox()
         Me.lblCodigoProd = New System.Windows.Forms.Label()
+        Me.lblImagen = New System.Windows.Forms.Label()
+        Me.btnImagen = New System.Windows.Forms.Button()
         Me.lblCliente = New System.Windows.Forms.Label()
         Me.btnMasUnidad = New System.Windows.Forms.Button()
         Me.btnMasMarca = New System.Windows.Forms.Button()
@@ -63,7 +65,6 @@ Partial Class FrmProductos
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblMensajeFoto = New System.Windows.Forms.Label()
         Me.FotoProducto = New System.Windows.Forms.PictureBox()
-        Me.lblImagen = New System.Windows.Forms.Label()
         Me.pnpDescProd = New System.Windows.Forms.Panel()
         Me.lblMostrarPrecio = New System.Windows.Forms.Label()
         Me.lblMostrarStock = New System.Windows.Forms.Label()
@@ -71,7 +72,6 @@ Partial Class FrmProductos
         Me.lblPrecio = New System.Windows.Forms.Label()
         Me.lblStock = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
-        Me.btnImagen = New System.Windows.Forms.Button()
         Me.PnlDataGrid = New System.Windows.Forms.Panel()
         Me.DataGridProducto = New System.Windows.Forms.DataGridView()
         Me.lblListaCliente = New System.Windows.Forms.Label()
@@ -282,6 +282,30 @@ Partial Class FrmProductos
         Me.lblCodigoProd.Size = New System.Drawing.Size(75, 13)
         Me.lblCodigoProd.TabIndex = 33
         Me.lblCodigoProd.Text = "Cod. Producto"
+        '
+        'lblImagen
+        '
+        Me.lblImagen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblImagen.AutoSize = True
+        Me.lblImagen.Location = New System.Drawing.Point(686, 129)
+        Me.lblImagen.Name = "lblImagen"
+        Me.lblImagen.Size = New System.Drawing.Size(88, 13)
+        Me.lblImagen.TabIndex = 25
+        Me.lblImagen.Text = "Eliga una imagen"
+        Me.lblImagen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnImagen
+        '
+        Me.btnImagen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnImagen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnImagen.Font = New System.Drawing.Font("Dungeon", 9.0!)
+        Me.btnImagen.Location = New System.Drawing.Point(782, 126)
+        Me.btnImagen.Name = "btnImagen"
+        Me.btnImagen.Size = New System.Drawing.Size(100, 23)
+        Me.btnImagen.TabIndex = 15
+        Me.btnImagen.Text = "Examinar..."
+        Me.btnImagen.UseVisualStyleBackColor = True
         '
         'lblCliente
         '
@@ -535,17 +559,6 @@ Partial Class FrmProductos
         Me.FotoProducto.TabIndex = 2
         Me.FotoProducto.TabStop = False
         '
-        'lblImagen
-        '
-        Me.lblImagen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.lblImagen.AutoSize = True
-        Me.lblImagen.Location = New System.Drawing.Point(686, 129)
-        Me.lblImagen.Name = "lblImagen"
-        Me.lblImagen.Size = New System.Drawing.Size(88, 13)
-        Me.lblImagen.TabIndex = 25
-        Me.lblImagen.Text = "Eliga una imagen"
-        Me.lblImagen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'pnpDescProd
         '
         Me.pnpDescProd.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
@@ -619,19 +632,6 @@ Partial Class FrmProductos
         Me.lblNombre.TabIndex = 27
         Me.lblNombre.Text = "Nombre :"
         '
-        'btnImagen
-        '
-        Me.btnImagen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnImagen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
-        Me.btnImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImagen.Font = New System.Drawing.Font("Dungeon", 9.0!)
-        Me.btnImagen.Location = New System.Drawing.Point(782, 126)
-        Me.btnImagen.Name = "btnImagen"
-        Me.btnImagen.Size = New System.Drawing.Size(100, 23)
-        Me.btnImagen.TabIndex = 15
-        Me.btnImagen.Text = "Examinar..."
-        Me.btnImagen.UseVisualStyleBackColor = True
-        '
         'PnlDataGrid
         '
         Me.PnlDataGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -659,10 +659,10 @@ Partial Class FrmProductos
         '
         Me.lblListaCliente.AutoSize = True
         Me.lblListaCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblListaCliente.Font = New System.Drawing.Font("Impact", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblListaCliente.Font = New System.Drawing.Font("Ink Free", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblListaCliente.Location = New System.Drawing.Point(4, 212)
         Me.lblListaCliente.Name = "lblListaCliente"
-        Me.lblListaCliente.Size = New System.Drawing.Size(249, 25)
+        Me.lblListaCliente.Size = New System.Drawing.Size(301, 22)
         Me.lblListaCliente.TabIndex = 38
         Me.lblListaCliente.Text = "L I S T A D O   D E   P R O D U C T O S "
         Me.lblListaCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter

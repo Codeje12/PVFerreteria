@@ -197,10 +197,10 @@ Partial Class FrmCliente
         Me.lblListaCliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblListaCliente.AutoSize = True
         Me.lblListaCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblListaCliente.Font = New System.Drawing.Font("Impact", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblListaCliente.Font = New System.Drawing.Font("Ink Free", 12.0!)
         Me.lblListaCliente.Location = New System.Drawing.Point(0, 217)
         Me.lblListaCliente.Name = "lblListaCliente"
-        Me.lblListaCliente.Size = New System.Drawing.Size(220, 25)
+        Me.lblListaCliente.Size = New System.Drawing.Size(279, 22)
         Me.lblListaCliente.TabIndex = 30
         Me.lblListaCliente.Text = "L I S T A D O   D E   C L I E N T E S"
         Me.lblListaCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter

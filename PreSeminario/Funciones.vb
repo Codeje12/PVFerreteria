@@ -2,6 +2,7 @@
 Module Funciones
     Public Imagen As String
     Public Sql As String
+    Public Descripcion As String
 
     '**************FUNCION PARA MOSTRAR LOS REGISTROS DE LA DATA BASE*********************
     Public Sub MostrarDataGrid(ByVal Table As DataGridView, Sqlx As String)
@@ -59,8 +60,8 @@ Module Funciones
 
     End Sub
     '****************FUNCIONES PARA INSERTAR***********************************************
-    Public Function AgregarClientes(ByVal nombre As String, ByVal apellido As String, ByVal dni As String, ByVal telefono As String, ByVal Correo As String, ByVal direccion As String, ByVal localidad As String) As Boolean
-        Dim SQL As String = " INSERT INTO cliente ( Nombre, Apellido, Dni, Telefono, Correo,Direccion,Localidad) Values ('" & nombre & "','" & apellido & "','" & dni & "','" & telefono & "','" & Correo & "','" & direccion & "','" & localidad & "')"
+    Public Function AgregarClientes(ByVal Frm As FrmCliente) As Boolean
+        Dim SQL As String = " INSERT INTO cliente ( Nombre, Apellido, Dni, Telefono, Correo,Direccion,Localidad) Values ('" & Frm.TxtNombre.Text & "','" & Frm.TxtApelido.Text & "','" & Frm.TxtDni.Text & "','" & Frm.TxtTelefono.Text & "','" & Frm.TxtCorreo.Text & "','" & Frm.TxtDireccion.Text & "','" & Frm.TxtLocalidad.Text & "')"
         Try
             EjecutarSql(SQL)
             MsgBox("Exito ", MsgBoxStyle.Information, "Registro Cargado")
@@ -71,16 +72,16 @@ Module Funciones
         Return False
     End Function
 
-    Public Function AgregarProducto(Nombre As String, codProd As String, Rubro As String, Marcas As String, Unidad As String, fecha As String, costo As Double, Iva As Integer, cantidad As Integer, Descripcion As String) As Boolean
+    Public Function AgregarProducto(ByRef Frm As FrmProductos) As Boolean
         '*******CALCULO IVA****************
         Dim Total As Double
-        If Iva = 1 Then
-            Total = (costo * 0.21) + costo
-        ElseIf Iva = 2 Then
-            Total = (costo * 0.4) + costo
+        If Frm.cbxIva.SelectedIndex = 0 Then
+            Total = (Frm.txtCosto.Text * 0.21) + Frm.txtCosto.Text
+        ElseIf Frm.cbxIva.SelectedIndex = 1 Then
+            Total = (Frm.txtCosto.Text * 0.4) + Frm.txtCosto.Text
         End If
         '**********************************
-        Sql = "INSERT INTO producto(Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha_Vencimiento,Nombre,codigo_producto,Precio_Costo,Precio_Venta,Descripcion,Ruta_Imagen) VALUES (" & Replace(Iva, ",", ".") & "," & Unidad & ",'" & Marcas & "','" & Rubro & "','" & cantidad & "','" & Replace(fecha, "/", "\\") & "', '" & Nombre & "','" & codProd & "'," & Replace(costo, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & Descripcion & "','" & Replace(Imagen, "\", "\\") & "')"
+        Sql = "INSERT INTO producto(Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha_Vencimiento,Nombre,codigo_producto,Precio_Costo,Precio_Venta,Descripcion,Ruta_Imagen) VALUES (" & Replace(Frm.cbxIva.SelectedValue, ",", ".") & "," & Frm.cbxUnidad.SelectedValue & ",'" & Frm.cbxMarcas.SelectedValue & "','" & Frm.cbxRubro.SelectedValue & "','" & Frm.txtCantidad.Text & "','" & Replace(Frm.DateTimeProducto.Value, "/", "\\") & "', '" & Frm.txtNombre.Text & "','" & Frm.txtCodProducto.Text & "'," & Replace(Frm.txtCosto.Text, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & Frm.txtDescripcion.Text & "','" & Replace(Imagen, "\", "\\") & "')"
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
@@ -94,8 +95,8 @@ Module Funciones
     End Function
     '*******************FUNCIONES PARA MODIFICAR **************************
 
-    Public Function Actualizar(ByVal nombre As String, ByVal apellido As String, ByVal dni As Integer, ByVal telefono As String, ByVal Correo As String, ByVal direccion As String, ByVal localidad As String)
-        Sql = "UPDATE Cliente SET Nombre = '" & nombre & "',Apellido = '" & apellido & "',telefono='" & telefono & "',correo ='" & Correo & "',direccion='" & direccion & "',localidad = '" & localidad & "' WHERE dni = " & dni
+    Public Function ActualizarCliente(ByVal Frm As FrmCliente)
+        Sql = "UPDATE Cliente SET Nombre = '" & Frm.TxtNombre.Text & "',Apellido = '" & Frm.TxtApelido.Text & "',telefono='" & Frm.TxtTelefono.Text & "',correo ='" & Frm.TxtCorreo.Text & "',direccion='" & Frm.TxtDireccion.Text & "',localidad = '" & Frm.TxtLocalidad.Text & "' WHERE dni = " & Frm.TxtDni.Text
 
         Try
             EjecutarSql(Sql)
@@ -138,18 +139,12 @@ Module Funciones
         Return False
     End Function
 
-
-    Public Function Nombre(ByVal Frm As FrmProductos)
-        MsgBox("Estamos en el campo " + Frm.txtNombre.Text + " !")
-        Return False
-    End Function
-
     '******Eliminar *******
     Public Function Eliminar(id As String, num As Integer)
         If num = 1 Then
             Sql = "Delete from cliente where dni = " & id
         ElseIf num = 2 Then
-            Sql = "Delete Form Producto where cod_producto = " & id
+            Sql = "Delete from Producto where codigo_producto = '" & id & "'"
 
         End If
 
@@ -185,7 +180,7 @@ Module Funciones
 
     End Function
     '******************** FUNCION PARA CARGAR LOS COMBOBOX EN LA VENTANA PRODUCTO *****************************************
-    Public Descripcion As String
+
     Public Sub ComboBox_Load(cbx As ComboBox, bandera As Char)
         Dim dataTable As New DataTable
 
@@ -234,26 +229,25 @@ Module Funciones
 
 
     '******************** FUNCIONES DE BUSQUEDAS ***********************************
-    Public Function BuscarProducto(ByVal busqueda As String) As DataTable
-        ' Dim Sql As String
-        ' If FrmProductos.CbxDescripcion.Checked = True Then
-        ' Sql = "select Nombre,Descripcion,Precio_Venta from producto where descripcion like '" & busqueda & "%' order by Id_Producto"
-        'ElseIf FrmProductos.CbxMarca.Checked = True Then
-        'Sql = "SELECT Nombre,Id_Marca,Precio_Venta FROM producto WHERE Id_Marca IN (SELECT Id_Marca FROM marca WHERE descripcion LIKE '%" & busqueda & "%') ORDER BY Id_Producto "
-        'ElseIf FrmProductos.CbxNombre.Checked = True Then
-        'Sql = "select Nombre,Id_Marca,Precio_Venta from producto where Nombre like '" & busqueda & "%' order by Id_Producto"
-        'ElseIf FrmProductos.CbxDescripcion.Checked = False And FrmProductos.CbxMarca.Checked = False And FrmProductos.CbxNombre.Checked = False Then
-        'Sql = "select * from producto where Nombre like '" & busqueda & "%' or Descripcion like '" & busqueda &
-        '       "%' or  Id_Marca IN (SELECT Id_Marca FROM marca WHERE descripcion LIKE '%" & busqueda & "%') order by Id_Producto"
-        'End If
-        'If ConectarMySql() Then
-        'Dim dt As New DataTable
-        'Dim da As New MySql.Data.MySqlClient.MySqlDataAdapter(Sql, ConexionMysql)
-        'da.Fill(dt)
-        'ConexionMysql.Close()
-        'Return dt
+    Public Function BuscarProducto(ByVal busqueda As String, Frm As FrmProductos) As DataTable
 
-        'End If
+        If Frm.CbxDescripcion.Checked = True Then
+            Sql = "select * from mostrartabla where descripcion like '" & busqueda & "%' order by Nombre"
+        ElseIf Frm.CbxMarca.Checked = True Then
+            Sql = "SELECT * FROM mostrartabla WHERE DescripcionM LIKE '" & busqueda & "%' ORDER BY nombre"
+        ElseIf Frm.CbxNombre.Checked = True Then
+            Sql = "select * from mostrartabla where Nombre like '" & busqueda & "%' order by nombre"
+        ElseIf Frm.CbxDescripcion.Checked = False And Frm.CbxMarca.Checked = False And Frm.CbxNombre.Checked = False Then
+            Sql = "select * from Mostrartabla where Nombre like '" & busqueda & "%' or Descripcion like '" & busqueda &
+                   "%' or  DescripcionM LIKE '%" & busqueda & "%' order by Nombre"
+        End If
+        If ConectarMySql() Then
+            Dim dt As New DataTable
+            Dim da As New MySql.Data.MySqlClient.MySqlDataAdapter(Sql, ConexionMysql)
+            da.Fill(dt)
+            ConexionMysql.Close()
+            Return dt
+        End If
         Return Nothing
     End Function
 
@@ -278,16 +272,16 @@ Module Funciones
     End Function
 
     '************************BUSCAR IMAGEN DEL PRODUCTO PARA AGREGAR***************
-    'Public Sub BuscarImagen(form As FrmProductos)
-    '    Dim img As String = Application.StartupPath & "\imagenes"
-    '    FrmProductos.OpenFileDialog1.Title = "Seleccione una imagen"
-    '    FrmProductos.OpenFileDialog1.InitialDirectory = img
-    '    FrmProductos.OpenFileDialog1.Filter = "Imagenes|*.jpg;*.png;*.bmp"
-    '    If FrmProductos.OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        Imagen = FrmProductos.OpenFileDialog1.FileName
-    '        FrmProductos.FotoProducto.Image = Image.FromFile(Imagen)
-    '    End If
-    'End Sub
+    Public Sub BuscarImagen(ByVal Frm As FrmProductos)
+        Dim img As String = Application.StartupPath & "\imagenes"
+        Frm.OpenFileDialogProducto.Title = "Seleccione una imagen"
+        Frm.OpenFileDialogProducto.InitialDirectory = img
+        Frm.OpenFileDialogProducto.Filter = "Imagenes|*.jpg;*.png;*.bmp"
+        If Frm.OpenFileDialogProducto.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            Imagen = Frm.OpenFileDialogProducto.FileName
+            Frm.FotoProducto.Image = Image.FromFile(Imagen)
+        End If
+    End Sub
     '***************************************************************************
 
     '****************VALIDAR LOS CAMPOS QUE SEAN TIPO DOUBLE*****************************
@@ -301,7 +295,6 @@ Module Funciones
             Return False
         End Try
     End Function
-
     '***************************************************************************
 End Module
 
