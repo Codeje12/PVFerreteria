@@ -277,10 +277,14 @@ Module Funciones
         Frm.OpenFileDialogProducto.Title = "Seleccione una imagen"
         Frm.OpenFileDialogProducto.InitialDirectory = img
         Frm.OpenFileDialogProducto.Filter = "Imagenes|*.jpg;*.png;*.bmp"
+
         If Frm.OpenFileDialogProducto.ShowDialog() = Windows.Forms.DialogResult.OK Then
+
             Imagen = Frm.OpenFileDialogProducto.FileName
             Frm.FotoProducto.Image = Image.FromFile(Imagen)
+
         End If
+
     End Sub
     '***************************************************************************
 

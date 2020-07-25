@@ -32,8 +32,8 @@ Module Conexion
                 ConexionMysql.Close()
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
-            ' MsgBox("Verifique los datos y vuelva a intentarlo. Acuerdese que no se pueden duplicar datos.", MsgBoxStyle.Information, "Error")
+            'MsgBox(ex.Message)
+            MsgBox("Verifique los datos y vuelva a intentarlo. Acuerdese que no se pueden duplicar datos.", MsgBoxStyle.Information, "Error")
             ConexionMysql.Close()
         End Try
     End Sub

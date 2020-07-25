@@ -62,6 +62,7 @@
     End Sub
 
     Private Sub btnImagen_Click(sender As Object, e As EventArgs) Handles btnImagen.Click
+        Me.lblMensajeFoto.Visible = False
         BuscarImagen(Me)
     End Sub
 
@@ -91,7 +92,6 @@
         ElseIf Me.Text = "Modificar" Then
 
             ActualizarProductos(Me)
-            'Me.txtNombre.Text, Me.cbxRubro.SelectedValue, Me.cbxMarcas.SelectedValue, Me.cbxUnidad.SelectedValue, Me.DateTimeProducto.Value, Replace(Me.txtCosto.Text, ".", ","), cbxIva.SelectedValue, Me.txtCantidad.Text, Me.txtDescripcion.Text, Me.txtCodProducto.Text)
             MostrarDataGrid(Me.DataGridProducto, Sql)
 
         End If
@@ -111,12 +111,14 @@
         Me.cbxRubro.Text = "Seleccionar"
         Me.cbxMarcas.Text = "Seleccionar"
         Me.lblMensajeFoto.Visible = False
-        'Me.FotoProducto.Dispose()
         Me.FotoProducto.Image = Nothing
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        Eliminar(txtCodProducto.Text, 2)
+        Dim pregunta As String = MsgBox("¿Está seguro de que desea eliminar?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Eliminar")
+        If pregunta = vbYes Then
+            Eliminar(txtCodProducto.Text, 2)
+        End If
         MostrarDataGrid(Me.DataGridProducto, Sql)
     End Sub
 
@@ -124,40 +126,46 @@
         ValidarCampoDecimal(Me.txtCosto)
     End Sub
 
-
-
     Private Sub DataGridProducto_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridProducto.MouseClick
 
         Me.lblMensajeFoto.Visible = False
-        Me.Text = "Modificar"
-        Me.txtNombre.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(1).Value
-        Me.txtCodProducto.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(2).Value
-        Me.txtCodProducto.Enabled = False
-        Me.cbxRubro.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(4).Value
-        Me.cbxMarcas.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(3).Value
-        Me.cbxUnidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(11).Value
-        Me.txtCosto.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(7).Value
-        Me.cbxIva.SelectedIndex = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(6).Value
-        Me.txtCantidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(10).Value
-        Me.txtDescripcion.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(9).Value
-
         Try
+
+            Me.lblMensajeFoto.Visible = False
+            Me.Text = "Modificar"
+            Me.txtNombre.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(1).Value
+            Me.txtCodProducto.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(2).Value
+            Me.txtCodProducto.Enabled = False
+            Me.cbxRubro.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(4).Value
+            Me.cbxMarcas.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(3).Value
+            Me.cbxUnidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(11).Value
+            Me.txtCosto.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(7).Value
+            Me.cbxIva.SelectedIndex = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(6).Value
+            Me.txtCantidad.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(10).Value
+            Me.txtDescripcion.Text = Me.DataGridProducto.Rows(Me.DataGridProducto.CurrentRow.Index).Cells(9).Value
+
             Dim img As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(12).Value) 'Selecciono el campo donde contiene la imagen del producto y lo guardo en la variable Imagen
             Me.FotoProducto.Image = Image.FromFile(img)
+
+
         Catch ex As Exception
-            'MsgBox(ex.Message)
+
             Me.FotoProducto.Image = Nothing
             Me.lblMensajeFoto.Visible = True
 
         End Try
 
-        Dim Nombre As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(1).Value)
-        Dim Precio As Double = (Me.DataGridProducto.SelectedRows.Item(0).Cells(8).Value)
-        Dim Stock As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(10).Value)
+        Try
+            Dim Nombre As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(1).Value)
+            Dim Precio As Double = (Me.DataGridProducto.SelectedRows.Item(0).Cells(8).Value)
+            Dim Stock As String = (Me.DataGridProducto.SelectedRows.Item(0).Cells(10).Value)
+            Me.lblMostrarPrecio.Text = Precio
+            Me.lblMostrarStock.Text = Stock
+            Me.LblMostrarNombre.Text = Nombre
+        Catch ex As Exception
+            MsgBox("Algo salio mal. Vuelva a intentarlo")
+        End Try
 
-        Me.lblMostrarPrecio.Text = Precio
-        Me.lblMostrarStock.Text = Stock
-        Me.LblMostrarNombre.Text = Nombre
     End Sub
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click

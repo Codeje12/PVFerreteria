@@ -15,7 +15,10 @@
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        Eliminar(Me.TxtDni.Text, 1)
+        Dim pregunta As String = MsgBox("¿Está seguro de que desea eliminar?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Eliminar")
+        If pregunta = vbYes Then
+            Eliminar(Me.TxtDni.Text, 1)
+        End If
         MostrarDataGrid(Me.DataGridViewCliente, Sql)
     End Sub
 
