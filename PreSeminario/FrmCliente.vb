@@ -87,7 +87,7 @@
             Me.TxtLocalidad.Text = Me.DataGridViewCliente.Rows(Me.DataGridViewCliente.CurrentRow.Index).Cells(7).Value
             Me.Text = "Modificar"
         Catch ex As Exception
-            MsgBox(ex)
+            MsgBox("")
         End Try
     End Sub
 End Class

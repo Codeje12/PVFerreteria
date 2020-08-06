@@ -30,6 +30,7 @@ Partial Class FmrPrincipal
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.btnMaximizar = New System.Windows.Forms.Button()
         Me.PanelMenu = New System.Windows.Forms.Panel()
+        Me.btnProveedores = New System.Windows.Forms.Button()
         Me.LogoEmpresa = New System.Windows.Forms.PictureBox()
         Me.btnBarraLateral = New System.Windows.Forms.PictureBox()
         Me.btnCliente = New System.Windows.Forms.Button()
@@ -127,6 +128,7 @@ Partial Class FmrPrincipal
         'PanelMenu
         '
         Me.PanelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(92, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.PanelMenu.Controls.Add(Me.btnProveedores)
         Me.PanelMenu.Controls.Add(Me.LogoEmpresa)
         Me.PanelMenu.Controls.Add(Me.btnBarraLateral)
         Me.PanelMenu.Controls.Add(Me.btnCliente)
@@ -141,10 +143,27 @@ Partial Class FmrPrincipal
         Me.PanelMenu.Size = New System.Drawing.Size(200, 566)
         Me.PanelMenu.TabIndex = 35
         '
+        'btnProveedores
+        '
+        Me.btnProveedores.FlatAppearance.BorderSize = 0
+        Me.btnProveedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
+        Me.btnProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnProveedores.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnProveedores.Image = CType(resources.GetObject("btnProveedores.Image"), System.Drawing.Image)
+        Me.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnProveedores.Location = New System.Drawing.Point(2, 255)
+        Me.btnProveedores.Name = "btnProveedores"
+        Me.btnProveedores.Size = New System.Drawing.Size(197, 57)
+        Me.btnProveedores.TabIndex = 43
+        Me.btnProveedores.Text = "  Proveedores"
+        Me.btnProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnProveedores.UseVisualStyleBackColor = True
+        '
         'LogoEmpresa
         '
         Me.LogoEmpresa.Image = CType(resources.GetObject("LogoEmpresa.Image"), System.Drawing.Image)
-        Me.LogoEmpresa.Location = New System.Drawing.Point(0, 40)
+        Me.LogoEmpresa.Location = New System.Drawing.Point(0, 32)
         Me.LogoEmpresa.Name = "LogoEmpresa"
         Me.LogoEmpresa.Size = New System.Drawing.Size(200, 91)
         Me.LogoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -155,7 +174,7 @@ Partial Class FmrPrincipal
         '
         Me.btnBarraLateral.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBarraLateral.Image = CType(resources.GetObject("btnBarraLateral.Image"), System.Drawing.Image)
-        Me.btnBarraLateral.Location = New System.Drawing.Point(140, 3)
+        Me.btnBarraLateral.Location = New System.Drawing.Point(1, 1)
         Me.btnBarraLateral.Name = "btnBarraLateral"
         Me.btnBarraLateral.Size = New System.Drawing.Size(60, 31)
         Me.btnBarraLateral.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -173,9 +192,9 @@ Partial Class FmrPrincipal
         Me.btnCliente.ForeColor = System.Drawing.SystemColors.ControlText
         Me.btnCliente.Image = CType(resources.GetObject("btnCliente.Image"), System.Drawing.Image)
         Me.btnCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCliente.Location = New System.Drawing.Point(0, 134)
+        Me.btnCliente.Location = New System.Drawing.Point(3, 128)
         Me.btnCliente.Name = "btnCliente"
-        Me.btnCliente.Size = New System.Drawing.Size(200, 72)
+        Me.btnCliente.Size = New System.Drawing.Size(194, 57)
         Me.btnCliente.TabIndex = 35
         Me.btnCliente.Text = "  Clientes"
         Me.btnCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -190,11 +209,11 @@ Partial Class FmrPrincipal
         Me.btnProductos.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnProductos.Image = CType(resources.GetObject("btnProductos.Image"), System.Drawing.Image)
         Me.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProductos.Location = New System.Drawing.Point(0, 211)
+        Me.btnProductos.Location = New System.Drawing.Point(3, 190)
         Me.btnProductos.Name = "btnProductos"
-        Me.btnProductos.Size = New System.Drawing.Size(200, 72)
+        Me.btnProductos.Size = New System.Drawing.Size(194, 57)
         Me.btnProductos.TabIndex = 37
-        Me.btnProductos.Text = "  Productos"
+        Me.btnProductos.Text = "     Artículos"
         Me.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnProductos.UseVisualStyleBackColor = True
         '
@@ -207,9 +226,9 @@ Partial Class FmrPrincipal
         Me.btnSalir.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalir.Image = CType(resources.GetObject("btnSalir.Image"), System.Drawing.Image)
         Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSalir.Location = New System.Drawing.Point(0, 494)
+        Me.btnSalir.Location = New System.Drawing.Point(0, 506)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(200, 72)
+        Me.btnSalir.Size = New System.Drawing.Size(197, 57)
         Me.btnSalir.TabIndex = 38
         Me.btnSalir.Text = "     Salir"
         Me.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -224,9 +243,9 @@ Partial Class FmrPrincipal
         Me.btnVentas.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVentas.Image = CType(resources.GetObject("btnVentas.Image"), System.Drawing.Image)
         Me.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVentas.Location = New System.Drawing.Point(0, 286)
+        Me.btnVentas.Location = New System.Drawing.Point(3, 319)
         Me.btnVentas.Name = "btnVentas"
-        Me.btnVentas.Size = New System.Drawing.Size(200, 72)
+        Me.btnVentas.Size = New System.Drawing.Size(194, 57)
         Me.btnVentas.TabIndex = 39
         Me.btnVentas.Text = "  Ventas"
         Me.btnVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -241,9 +260,9 @@ Partial Class FmrPrincipal
         Me.btnAyuda.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAyuda.Image = CType(resources.GetObject("btnAyuda.Image"), System.Drawing.Image)
         Me.btnAyuda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAyuda.Location = New System.Drawing.Point(0, 426)
+        Me.btnAyuda.Location = New System.Drawing.Point(3, 443)
         Me.btnAyuda.Name = "btnAyuda"
-        Me.btnAyuda.Size = New System.Drawing.Size(200, 72)
+        Me.btnAyuda.Size = New System.Drawing.Size(194, 57)
         Me.btnAyuda.TabIndex = 36
         Me.btnAyuda.Text = "  Ayuda"
         Me.btnAyuda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -258,9 +277,9 @@ Partial Class FmrPrincipal
         Me.btnCompras.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCompras.Image = CType(resources.GetObject("btnCompras.Image"), System.Drawing.Image)
         Me.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCompras.Location = New System.Drawing.Point(0, 357)
+        Me.btnCompras.Location = New System.Drawing.Point(2, 380)
         Me.btnCompras.Name = "btnCompras"
-        Me.btnCompras.Size = New System.Drawing.Size(200, 72)
+        Me.btnCompras.Size = New System.Drawing.Size(195, 57)
         Me.btnCompras.TabIndex = 40
         Me.btnCompras.Text = "  Compras"
         Me.btnCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -335,4 +354,5 @@ Partial Class FmrPrincipal
     Friend WithEvents tmOcultarBarraMenu As Timer
     Friend WithEvents tmMostrarBarraMenu As Timer
     Friend WithEvents LogoEmpresa As PictureBox
+    Friend WithEvents btnProveedores As Button
 End Class

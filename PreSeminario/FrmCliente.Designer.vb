@@ -52,6 +52,8 @@ Partial Class FrmCliente
         Me.TxtNombre = New System.Windows.Forms.TextBox()
         Me.DataGridViewCliente = New System.Windows.Forms.DataGridView()
         Me.pnlCliente = New System.Windows.Forms.Panel()
+        Me.txtEmpresa = New System.Windows.Forms.TextBox()
+        Me.lblEmpresa = New System.Windows.Forms.Label()
         Me.PnlAbm.SuspendLayout()
         Me.GpbClientes.SuspendLayout()
         Me.PnlUpClientes.SuspendLayout()
@@ -223,6 +225,8 @@ Partial Class FrmCliente
         Me.GpbDatosClientes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GpbDatosClientes.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.GpbDatosClientes.Controls.Add(Me.txtEmpresa)
+        Me.GpbDatosClientes.Controls.Add(Me.lblEmpresa)
         Me.GpbDatosClientes.Controls.Add(Me.TxtLocalidad)
         Me.GpbDatosClientes.Controls.Add(Me.lblLocalidad)
         Me.GpbDatosClientes.Controls.Add(Me.TxtDireccion)
@@ -247,7 +251,7 @@ Partial Class FrmCliente
         '
         'TxtLocalidad
         '
-        Me.TxtLocalidad.Location = New System.Drawing.Point(589, 43)
+        Me.TxtLocalidad.Location = New System.Drawing.Point(741, 80)
         Me.TxtLocalidad.Name = "TxtLocalidad"
         Me.TxtLocalidad.Size = New System.Drawing.Size(100, 20)
         Me.TxtLocalidad.TabIndex = 7
@@ -255,7 +259,7 @@ Partial Class FrmCliente
         'lblLocalidad
         '
         Me.lblLocalidad.AutoSize = True
-        Me.lblLocalidad.Location = New System.Drawing.Point(522, 52)
+        Me.lblLocalidad.Location = New System.Drawing.Point(646, 87)
         Me.lblLocalidad.Name = "lblLocalidad"
         Me.lblLocalidad.Size = New System.Drawing.Size(53, 13)
         Me.lblLocalidad.TabIndex = 14
@@ -263,7 +267,7 @@ Partial Class FrmCliente
         '
         'TxtDireccion
         '
-        Me.TxtDireccion.Location = New System.Drawing.Point(403, 131)
+        Me.TxtDireccion.Location = New System.Drawing.Point(741, 39)
         Me.TxtDireccion.Name = "TxtDireccion"
         Me.TxtDireccion.Size = New System.Drawing.Size(100, 20)
         Me.TxtDireccion.TabIndex = 6
@@ -284,7 +288,7 @@ Partial Class FrmCliente
         'lblDireccion
         '
         Me.lblDireccion.AutoSize = True
-        Me.lblDireccion.Location = New System.Drawing.Point(312, 127)
+        Me.lblDireccion.Location = New System.Drawing.Point(646, 46)
         Me.lblDireccion.Name = "lblDireccion"
         Me.lblDireccion.Size = New System.Drawing.Size(52, 13)
         Me.lblDireccion.TabIndex = 12
@@ -292,14 +296,14 @@ Partial Class FrmCliente
         '
         'TxtCorreo
         '
-        Me.TxtCorreo.Location = New System.Drawing.Point(403, 87)
+        Me.TxtCorreo.Location = New System.Drawing.Point(398, 103)
         Me.TxtCorreo.Name = "TxtCorreo"
         Me.TxtCorreo.Size = New System.Drawing.Size(100, 20)
         Me.TxtCorreo.TabIndex = 5
         '
         'TxtTelefono
         '
-        Me.TxtTelefono.Location = New System.Drawing.Point(403, 46)
+        Me.TxtTelefono.Location = New System.Drawing.Point(398, 59)
         Me.TxtTelefono.Name = "TxtTelefono"
         Me.TxtTelefono.Size = New System.Drawing.Size(100, 20)
         Me.TxtTelefono.TabIndex = 4
@@ -307,7 +311,7 @@ Partial Class FrmCliente
         'lblCorreo
         '
         Me.lblCorreo.AutoSize = True
-        Me.lblCorreo.Location = New System.Drawing.Point(325, 86)
+        Me.lblCorreo.Location = New System.Drawing.Point(303, 102)
         Me.lblCorreo.Name = "lblCorreo"
         Me.lblCorreo.Size = New System.Drawing.Size(38, 13)
         Me.lblCorreo.TabIndex = 8
@@ -316,7 +320,7 @@ Partial Class FrmCliente
         'lblTelefono
         '
         Me.lblTelefono.AutoSize = True
-        Me.lblTelefono.Location = New System.Drawing.Point(308, 53)
+        Me.lblTelefono.Location = New System.Drawing.Point(303, 66)
         Me.lblTelefono.Name = "lblTelefono"
         Me.lblTelefono.Size = New System.Drawing.Size(49, 13)
         Me.lblTelefono.TabIndex = 6
@@ -324,7 +328,7 @@ Partial Class FrmCliente
         '
         'TxtDni
         '
-        Me.TxtDni.Location = New System.Drawing.Point(182, 124)
+        Me.TxtDni.Location = New System.Drawing.Point(102, 122)
         Me.TxtDni.Name = "TxtDni"
         Me.TxtDni.Size = New System.Drawing.Size(100, 20)
         Me.TxtDni.TabIndex = 3
@@ -332,7 +336,7 @@ Partial Class FrmCliente
         'lblDni
         '
         Me.lblDni.AutoSize = True
-        Me.lblDni.Location = New System.Drawing.Point(106, 131)
+        Me.lblDni.Location = New System.Drawing.Point(5, 129)
         Me.lblDni.Name = "lblDni"
         Me.lblDni.Size = New System.Drawing.Size(23, 13)
         Me.lblDni.TabIndex = 4
@@ -340,7 +344,7 @@ Partial Class FrmCliente
         '
         'TxtApelido
         '
-        Me.TxtApelido.Location = New System.Drawing.Point(182, 80)
+        Me.TxtApelido.Location = New System.Drawing.Point(102, 80)
         Me.TxtApelido.Name = "TxtApelido"
         Me.TxtApelido.Size = New System.Drawing.Size(100, 20)
         Me.TxtApelido.TabIndex = 2
@@ -348,7 +352,7 @@ Partial Class FrmCliente
         'lblApellido
         '
         Me.lblApellido.AutoSize = True
-        Me.lblApellido.Location = New System.Drawing.Point(85, 87)
+        Me.lblApellido.Location = New System.Drawing.Point(5, 87)
         Me.lblApellido.Name = "lblApellido"
         Me.lblApellido.Size = New System.Drawing.Size(44, 13)
         Me.lblApellido.TabIndex = 2
@@ -357,7 +361,7 @@ Partial Class FrmCliente
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(85, 46)
+        Me.lblNombre.Location = New System.Drawing.Point(5, 46)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(44, 13)
         Me.lblNombre.TabIndex = 1
@@ -365,7 +369,7 @@ Partial Class FrmCliente
         '
         'TxtNombre
         '
-        Me.TxtNombre.Location = New System.Drawing.Point(182, 39)
+        Me.TxtNombre.Location = New System.Drawing.Point(102, 39)
         Me.TxtNombre.Name = "TxtNombre"
         Me.TxtNombre.Size = New System.Drawing.Size(100, 20)
         Me.TxtNombre.TabIndex = 0
@@ -393,6 +397,22 @@ Partial Class FrmCliente
         Me.pnlCliente.Name = "pnlCliente"
         Me.pnlCliente.Size = New System.Drawing.Size(944, 559)
         Me.pnlCliente.TabIndex = 32
+        '
+        'txtEmpresa
+        '
+        Me.txtEmpresa.Location = New System.Drawing.Point(741, 122)
+        Me.txtEmpresa.Name = "txtEmpresa"
+        Me.txtEmpresa.Size = New System.Drawing.Size(100, 20)
+        Me.txtEmpresa.TabIndex = 32
+        '
+        'lblEmpresa
+        '
+        Me.lblEmpresa.AutoSize = True
+        Me.lblEmpresa.Location = New System.Drawing.Point(646, 129)
+        Me.lblEmpresa.Name = "lblEmpresa"
+        Me.lblEmpresa.Size = New System.Drawing.Size(48, 13)
+        Me.lblEmpresa.TabIndex = 33
+        Me.lblEmpresa.Text = "Empresa"
         '
         'FrmCliente
         '
@@ -447,4 +467,6 @@ Partial Class FrmCliente
     Friend WithEvents lblApellido As Label
     Friend WithEvents lblNombre As Label
     Friend WithEvents TxtNombre As TextBox
+    Friend WithEvents txtEmpresa As TextBox
+    Friend WithEvents lblEmpresa As Label
 End Class

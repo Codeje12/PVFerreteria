@@ -1,5 +1,5 @@
 ﻿
-Module Funciones
+Module ModuloAbm
     Public Imagen As String
     Public Sql As String
     Public Descripcion As String
@@ -81,7 +81,11 @@ Module Funciones
             Total = (Frm.txtCosto.Text * 0.4) + Frm.txtCosto.Text
         End If
         '**********************************
-        Sql = "INSERT INTO producto(Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha_Vencimiento,Nombre,codigo_producto,Precio_Costo,Precio_Venta,Descripcion,Ruta_Imagen) VALUES (" & Replace(Frm.cbxIva.SelectedValue, ",", ".") & "," & Frm.cbxUnidad.SelectedValue & ",'" & Frm.cbxMarcas.SelectedValue & "','" & Frm.cbxRubro.SelectedValue & "','" & Frm.txtCantidad.Text & "','" & Replace(Frm.DateTimeProducto.Value, "/", "\\") & "', '" & Frm.txtNombre.Text & "','" & Frm.txtCodProducto.Text & "'," & Replace(Frm.txtCosto.Text, ",", ".") & "," & Replace(Total, ",", ".") & ",'" & Frm.txtDescripcion.Text & "','" & Replace(Imagen, "\", "\\") & "')"
+        Sql = "INSERT INTO producto(Id_Iva,Id_Unidad,Id_Marca,Id_Rubro,Stock,Fecha_Vencimiento,Nombre,codigo_producto,Precio_Costo,Precio_Venta,Descripcion,Ruta_Imagen)
+                VALUES (" & Replace(Frm.cbxIva.SelectedValue, ",", ".") & "," & Frm.cbxUnidad.SelectedValue & ",'" & Frm.cbxMarcas.SelectedValue & "',
+                '" & Frm.cbxRubro.SelectedValue & "','" & Frm.txtCantidad.Text & "','" & Replace(Frm.DateTimeProducto.Value, "/", "\\") & "',
+                '" & Frm.txtNombre.Text & "','" & Frm.txtCodProducto.Text & "'," & Replace(Frm.txtCosto.Text, ",", ".") & "," & Replace(Total, ",", ".") & ",
+                '" & Frm.txtDescripcion.Text & "','" & Replace(Imagen, "\", "\\") & "')"
         Try
             EjecutarSql(Sql)
             MsgBox("Exito", MsgBoxStyle.Information)
@@ -92,6 +96,23 @@ Module Funciones
         Return False
 
 
+    End Function
+
+    Public Function Agregar(frm As FrmProveedores) As Boolean
+
+        Dim SQL As String = " INSERT INTO proveedor ( Nombre, Apellido, Dni, Telefono, Correo, Direccion, Localidad, Empresa)
+                            Values ('" & frm.TxtNombre.Text & "','" & frm.TxtApelido.Text & "','" & frm.TxtDni.Text & "',
+                            '" & frm.TxtTelefono.Text & "','" & frm.TxtCorreo.Text & "','" & frm.TxtDireccion.Text & "',
+                            '" & frm.TxtLocalidad.Text & "', '" & frm.txtEmpresa.Text & "')"
+        Try
+            EjecutarSql(SQL)
+            MsgBox("Exito ", MsgBoxStyle.Information, "Registro Cargado")
+            Return True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return False
     End Function
     '*******************FUNCIONES PARA MODIFICAR **************************
 

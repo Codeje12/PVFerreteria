@@ -68,6 +68,7 @@ Public Class FmrPrincipal
     End Sub
 
     Private Sub tmMostrarBarraMenu_Tick(sender As Object, e As EventArgs) Handles tmMostrarBarraMenu.Tick
+
         If PanelMenu.Width >= 200 Then
             Me.tmMostrarBarraMenu.Enabled = False
         Else
@@ -75,9 +76,11 @@ Public Class FmrPrincipal
             Me.LogoEmpresa.Width = 200
             Me.LogoEmpresa.Height = 105
         End If
+
     End Sub
 
     Private Sub btnBarraLateral_Click(sender As Object, e As EventArgs) Handles btnBarraLateral.Click
+
         If Me.PanelMenu.Width = 200 Then
             tmOcultarBarraMenu.Enabled = True
             Me.LogoEmpresa.Width = 52
@@ -85,10 +88,12 @@ Public Class FmrPrincipal
         ElseIf Me.PanelMenu.Width = 60 Then
             Me.tmMostrarBarraMenu.Enabled = True
         End If
+
         MostrarDataGrid(FrmCliente.DataGridViewCliente, "Select * From Cliente Order By Nombre")
     End Sub
 
     Private Sub AbrirFormPanel(ByVal FrmHijo As Object)
+
         If Me.PanelContenedor.Controls.Count > 0 Then
             Me.PanelContenedor.Controls.RemoveAt(0)
         End If
@@ -99,6 +104,11 @@ Public Class FmrPrincipal
         Me.PanelContenedor.Controls.Add(fh)
         Me.PanelContenedor.Tag = fh
         fh.Show()
+
     End Sub
 
+    Private Sub btnProveedores_Click(sender As Object, e As EventArgs) Handles btnProveedores.Click
+        AbrirFormPanel(New FrmProveedores)
+
+    End Sub
 End Class
