@@ -98,7 +98,7 @@ Module ModuloAbm
 
     End Function
 
-    Public Function Agregar(frm As FrmProveedores) As Boolean
+    Public Function AgregarProveedor(frm As FrmProveedores) As Boolean
 
         Dim SQL As String = " INSERT INTO proveedor ( Nombre, Apellido, Dni, Telefono, Correo, Direccion, Localidad, Empresa)
                             Values ('" & frm.TxtNombre.Text & "','" & frm.TxtApelido.Text & "','" & frm.TxtDni.Text & "',
@@ -160,13 +160,30 @@ Module ModuloAbm
         Return False
     End Function
 
+    Public Function ActualizarProveedor(ByVal Frm As FrmProveedores)
+        Sql = "UPDATE proveedor SET Nombre = '" & Frm.TxtNombre.Text & "',
+        Apellido = '" & Frm.TxtApelido.Text & "',telefono='" & Frm.TxtTelefono.Text & "',
+        correo ='" & Frm.TxtCorreo.Text & "',direccion='" & Frm.TxtDireccion.Text & "',
+        localidad = '" & Frm.TxtLocalidad.Text & "',empresa ='" & Frm.txtEmpresa.Text & "' WHERE dni = '" & Frm.TxtDni.Text & "'"
+        Try
+            EjecutarSql(Sql)
+            MsgBox("Exito", MsgBoxStyle.Information)
+            Return True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return False
+
+    End Function
     '******Eliminar *******
     Public Function Eliminar(id As String, num As Integer)
         If num = 1 Then
             Sql = "Delete from cliente where dni = " & id
         ElseIf num = 2 Then
             Sql = "Delete from Producto where codigo_producto = '" & id & "'"
-
+        ElseIf num = 3 Then
+            Sql = "Delete from proveedor where dni = '" & id & "'"
         End If
 
         Try
@@ -188,7 +205,8 @@ Module ModuloAbm
 
     '*************************FUNCION PARA AGREGAR MAS MARCAS,RUBROS Y UNIDADES DE MEDIDAS A LA BASE DE DATOS*******************
     Public Function AgregarComboBox(ByVal campo As String, Description As String) As Boolean
-        Dim Sql As String = "INSERT INTO " & campo & "  (" & Description & ")
+
+        Dim Sql As String = "INSERT INTO" & campo & "  (" & Description & ")
                             values ('" & FrmAgregarComboBox.txtComboBoxAgregar.Text & "')"
         Try
             EjecutarSql(Sql)

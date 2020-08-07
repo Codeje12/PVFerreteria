@@ -64,19 +64,20 @@
     End Sub
     '******FUNCIONES PARA LIMPIAR LOS TEXTBOX*********
     Public Sub limpiarCliente()
-        Me.TxtNombre.Text = ""
-        Me.TxtApelido.Text = ""
-        Me.TxtDni.Text = ""
-        Me.TxtDni.Enabled = True
-        Me.TxtCorreo.Text = ""
-        Me.TxtTelefono.Text = ""
-        Me.TxtDireccion.Text = ""
-        Me.TxtLocalidad.Text = ""
+        Dim obj As Control
+        For Each obj In
+        Me.PnlUpClientes.Controls
+            If TypeOf (obj) Is TextBox Then
+                obj.Text = ""
+                CType(obj, TextBox).ReadOnly = False
+            End If
+        Next
+        TxtDni.Enabled = True
     End Sub
 
     Private Sub DataGridViewCliente_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridViewCliente.MouseClick
         Me.TxtDni.Enabled = False
-
+        Me.Text = "Modificar"
         Try
             Me.TxtNombre.Text = Me.DataGridViewCliente.Rows(Me.DataGridViewCliente.CurrentRow.Index).Cells(1).Value
             Me.TxtApelido.Text = Me.DataGridViewCliente.Rows(Me.DataGridViewCliente.CurrentRow.Index).Cells(2).Value
@@ -85,7 +86,7 @@
             Me.TxtTelefono.Text = Me.DataGridViewCliente.Rows(Me.DataGridViewCliente.CurrentRow.Index).Cells(5).Value
             Me.TxtDireccion.Text = Me.DataGridViewCliente.Rows(Me.DataGridViewCliente.CurrentRow.Index).Cells(6).Value
             Me.TxtLocalidad.Text = Me.DataGridViewCliente.Rows(Me.DataGridViewCliente.CurrentRow.Index).Cells(7).Value
-            Me.Text = "Modificar"
+
         Catch ex As Exception
             MsgBox("")
         End Try

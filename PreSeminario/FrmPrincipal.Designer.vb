@@ -145,6 +145,8 @@ Partial Class FmrPrincipal
         '
         'btnProveedores
         '
+        Me.btnProveedores.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnProveedores.FlatAppearance.BorderSize = 0
         Me.btnProveedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.btnProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(70, Byte), Integer))
@@ -152,10 +154,10 @@ Partial Class FmrPrincipal
         Me.btnProveedores.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnProveedores.Image = CType(resources.GetObject("btnProveedores.Image"), System.Drawing.Image)
         Me.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProveedores.Location = New System.Drawing.Point(2, 255)
+        Me.btnProveedores.Location = New System.Drawing.Point(2, 254)
         Me.btnProveedores.Name = "btnProveedores"
-        Me.btnProveedores.Size = New System.Drawing.Size(197, 57)
-        Me.btnProveedores.TabIndex = 43
+        Me.btnProveedores.Size = New System.Drawing.Size(195, 57)
+        Me.btnProveedores.TabIndex = 37
         Me.btnProveedores.Text = "  Proveedores"
         Me.btnProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnProveedores.UseVisualStyleBackColor = True
@@ -174,7 +176,7 @@ Partial Class FmrPrincipal
         '
         Me.btnBarraLateral.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBarraLateral.Image = CType(resources.GetObject("btnBarraLateral.Image"), System.Drawing.Image)
-        Me.btnBarraLateral.Location = New System.Drawing.Point(1, 1)
+        Me.btnBarraLateral.Location = New System.Drawing.Point(137, 0)
         Me.btnBarraLateral.Name = "btnBarraLateral"
         Me.btnBarraLateral.Size = New System.Drawing.Size(60, 31)
         Me.btnBarraLateral.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -183,6 +185,8 @@ Partial Class FmrPrincipal
         '
         'btnCliente
         '
+        Me.btnCliente.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCliente.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.btnCliente.FlatAppearance.BorderSize = 0
         Me.btnCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
@@ -192,7 +196,7 @@ Partial Class FmrPrincipal
         Me.btnCliente.ForeColor = System.Drawing.SystemColors.ControlText
         Me.btnCliente.Image = CType(resources.GetObject("btnCliente.Image"), System.Drawing.Image)
         Me.btnCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCliente.Location = New System.Drawing.Point(3, 128)
+        Me.btnCliente.Location = New System.Drawing.Point(3, 126)
         Me.btnCliente.Name = "btnCliente"
         Me.btnCliente.Size = New System.Drawing.Size(194, 57)
         Me.btnCliente.TabIndex = 35
@@ -202,6 +206,8 @@ Partial Class FmrPrincipal
         '
         'btnProductos
         '
+        Me.btnProductos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnProductos.FlatAppearance.BorderSize = 0
         Me.btnProductos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.btnProductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(70, Byte), Integer))
@@ -209,16 +215,18 @@ Partial Class FmrPrincipal
         Me.btnProductos.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnProductos.Image = CType(resources.GetObject("btnProductos.Image"), System.Drawing.Image)
         Me.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProductos.Location = New System.Drawing.Point(3, 190)
+        Me.btnProductos.Location = New System.Drawing.Point(3, 189)
         Me.btnProductos.Name = "btnProductos"
         Me.btnProductos.Size = New System.Drawing.Size(194, 57)
-        Me.btnProductos.TabIndex = 37
+        Me.btnProductos.TabIndex = 36
         Me.btnProductos.Text = "     Artículos"
         Me.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnProductos.UseVisualStyleBackColor = True
         '
         'btnSalir
         '
+        Me.btnSalir.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.FlatAppearance.BorderSize = 0
         Me.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(70, Byte), Integer))
@@ -226,16 +234,18 @@ Partial Class FmrPrincipal
         Me.btnSalir.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalir.Image = CType(resources.GetObject("btnSalir.Image"), System.Drawing.Image)
         Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSalir.Location = New System.Drawing.Point(0, 506)
+        Me.btnSalir.Location = New System.Drawing.Point(2, 506)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(197, 57)
-        Me.btnSalir.TabIndex = 38
+        Me.btnSalir.Size = New System.Drawing.Size(195, 57)
+        Me.btnSalir.TabIndex = 41
         Me.btnSalir.Text = "     Salir"
         Me.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSalir.UseVisualStyleBackColor = True
         '
         'btnVentas
         '
+        Me.btnVentas.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnVentas.FlatAppearance.BorderSize = 0
         Me.btnVentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.btnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(70, Byte), Integer))
@@ -243,16 +253,18 @@ Partial Class FmrPrincipal
         Me.btnVentas.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVentas.Image = CType(resources.GetObject("btnVentas.Image"), System.Drawing.Image)
         Me.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVentas.Location = New System.Drawing.Point(3, 319)
+        Me.btnVentas.Location = New System.Drawing.Point(3, 320)
         Me.btnVentas.Name = "btnVentas"
         Me.btnVentas.Size = New System.Drawing.Size(194, 57)
-        Me.btnVentas.TabIndex = 39
+        Me.btnVentas.TabIndex = 38
         Me.btnVentas.Text = "  Ventas"
         Me.btnVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnVentas.UseVisualStyleBackColor = True
         '
         'btnAyuda
         '
+        Me.btnAyuda.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAyuda.FlatAppearance.BorderSize = 0
         Me.btnAyuda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.btnAyuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(70, Byte), Integer))
@@ -263,13 +275,15 @@ Partial Class FmrPrincipal
         Me.btnAyuda.Location = New System.Drawing.Point(3, 443)
         Me.btnAyuda.Name = "btnAyuda"
         Me.btnAyuda.Size = New System.Drawing.Size(194, 57)
-        Me.btnAyuda.TabIndex = 36
+        Me.btnAyuda.TabIndex = 40
         Me.btnAyuda.Text = "  Ayuda"
         Me.btnAyuda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnAyuda.UseVisualStyleBackColor = True
         '
         'btnCompras
         '
+        Me.btnCompras.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCompras.FlatAppearance.BorderSize = 0
         Me.btnCompras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.btnCompras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(70, Byte), Integer))
@@ -277,10 +291,10 @@ Partial Class FmrPrincipal
         Me.btnCompras.Font = New System.Drawing.Font("Dungeon", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCompras.Image = CType(resources.GetObject("btnCompras.Image"), System.Drawing.Image)
         Me.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCompras.Location = New System.Drawing.Point(2, 380)
+        Me.btnCompras.Location = New System.Drawing.Point(2, 381)
         Me.btnCompras.Name = "btnCompras"
         Me.btnCompras.Size = New System.Drawing.Size(195, 57)
-        Me.btnCompras.TabIndex = 40
+        Me.btnCompras.TabIndex = 39
         Me.btnCompras.Text = "  Compras"
         Me.btnCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnCompras.UseVisualStyleBackColor = True

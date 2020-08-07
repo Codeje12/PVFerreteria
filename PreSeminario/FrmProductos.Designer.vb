@@ -162,7 +162,7 @@ Partial Class FrmProductos
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Dungeon", 9.0!)
         Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnModificar.Location = New System.Drawing.Point(353, 10)
+        Me.btnModificar.Location = New System.Drawing.Point(238, 10)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(97, 48)
         Me.btnModificar.TabIndex = 27
@@ -192,7 +192,7 @@ Partial Class FrmProductos
         Me.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEliminar.Font = New System.Drawing.Font("Dungeon", 9.0!)
         Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnEliminar.Location = New System.Drawing.Point(238, 10)
+        Me.btnEliminar.Location = New System.Drawing.Point(353, 10)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(97, 48)
         Me.btnEliminar.TabIndex = 16
